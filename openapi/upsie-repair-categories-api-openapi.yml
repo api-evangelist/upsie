@@ -1,0 +1,42 @@
+openapi: 3.0.3
+info:
+  title: Upsie Partner Network Authorization Repair Categories API
+  version: 1.0.0
+  description: 'Welcome to the Upsie Partner API! We are excited to offer our partners a secure and reliable way to access our repair network. Our API is designed to provide a simple and standardized interface for accessing the repair network while maintaining the highest level of security. It allows partner network members to easily request repairs, access details about all their repairs, and obtain other repair-related information. To ensure that all requests are authenticated and authorized, we use JSON Web Tokens (JWT) in our API. This feature ensures that only authorized users can access our network, and all requests remain secure and protected from malicious attacks. Additionally, our API adheres to industry-standard RESTful principles, making it easy to integrate with a wide range of platforms and applications. We are committed to providing our partners and customers with the best possible experience when using our API, and we welcome feedback and suggestions for improvement via email to dev@upsie.com . Accessing the API The production api is accessed at https://api.upsie.com and a sandbox environment is accessible at https://stage-api.upsie.com base production url: api.upsie.com base stage url: stage-api.upsie.com Authentication The Upsie Partner Network API uses JWT Tokens to authenticate requests. The token should be passed in a token header with each api request. Suggestions for safe use of JWT Tokens Protect your token: These API keys carry many privileges, so be sure to keep them secure. Do not share API keys in publicly accessible areas such as GitHub, client-side code, etc. Do not share your token with others and always keep it safe. Use HTTPS: Always use a secure connection when making API requests to prevent attackers from intercepting or tampering with the JWT token. Invalidate token when necessary: Always invalidate your accounts JWT token if you suspect one has been lost or stolen. Partner scoped API access tokens have 10 year expiration time. API tokens can be generated and invalidated via the partner portal. Contact us if you need access to the partner portal or to be allowed API access.'
+  contact:
+    email: dev@upsie.com
+servers:
+- url: https://api.upsie.com
+  description: Production
+- url: https://stage-api.upsie.com
+  description: Sandbox / stage
+tags:
+- name: Repair Categories
+paths:
+  /partner/repaircategories:
+    get:
+      operationId: listRepairCategories
+      summary: Get All Repair Categories
+      tags:
+      - Repair Categories
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Get All Repair Categories
+      - Get a Repair Category
+components:
+  securitySchemes:
+    jwtToken:
+      type: apiKey
+      in: header
+      name: token
+      description: JWT passed in a `token` header with each request. Access tokens expire after 30 days, refresh tokens after 60 days; partner-scoped API access tokens have a 10 year expiration and are generated / invalidated via the Upsie Partner Portal.
+externalDocs:
+  description: Official Postman documentation (api.upsie.com/docs redirects here)
+  url: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+x-generated: '2026-07-21'
+x-method: derived
+x-source: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK (Upsie Partner Network API Postman collection, fetched 2026-07-21)

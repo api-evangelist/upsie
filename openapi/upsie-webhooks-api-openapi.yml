@@ -1,0 +1,136 @@
+openapi: 3.0.3
+info:
+  title: Upsie Partner Network Authorization Webhooks API
+  version: 1.0.0
+  description: 'Welcome to the Upsie Partner API! We are excited to offer our partners a secure and reliable way to access our repair network. Our API is designed to provide a simple and standardized interface for accessing the repair network while maintaining the highest level of security. It allows partner network members to easily request repairs, access details about all their repairs, and obtain other repair-related information. To ensure that all requests are authenticated and authorized, we use JSON Web Tokens (JWT) in our API. This feature ensures that only authorized users can access our network, and all requests remain secure and protected from malicious attacks. Additionally, our API adheres to industry-standard RESTful principles, making it easy to integrate with a wide range of platforms and applications. We are committed to providing our partners and customers with the best possible experience when using our API, and we welcome feedback and suggestions for improvement via email to dev@upsie.com . Accessing the API The production api is accessed at https://api.upsie.com and a sandbox environment is accessible at https://stage-api.upsie.com base production url: api.upsie.com base stage url: stage-api.upsie.com Authentication The Upsie Partner Network API uses JWT Tokens to authenticate requests. The token should be passed in a token header with each api request. Suggestions for safe use of JWT Tokens Protect your token: These API keys carry many privileges, so be sure to keep them secure. Do not share API keys in publicly accessible areas such as GitHub, client-side code, etc. Do not share your token with others and always keep it safe. Use HTTPS: Always use a secure connection when making API requests to prevent attackers from intercepting or tampering with the JWT token. Invalidate token when necessary: Always invalidate your accounts JWT token if you suspect one has been lost or stolen. Partner scoped API access tokens have 10 year expiration time. API tokens can be generated and invalidated via the partner portal. Contact us if you need access to the partner portal or to be allowed API access.'
+  contact:
+    email: dev@upsie.com
+servers:
+- url: https://api.upsie.com
+  description: Production
+- url: https://stage-api.upsie.com
+  description: Sandbox / stage
+tags:
+- name: Webhooks
+paths:
+  /partner/partnerorganizationwebhooks:
+    get:
+      operationId: listWebhooks
+      summary: get all webhooks
+      tags:
+      - Webhooks
+      description: Get all webhooks
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - get all webhooks
+    post:
+      operationId: createWebhook
+      summary: create webhook
+      tags:
+      - Webhooks
+      description: 'Create a webhook. url | string : The url that webhook data should be sent to. meta | jsonb : The meta object is a flexible object that can accept any data you would like to attach to the webhook. Some feilds are required. Attribute Type events (required) string [] - an array of the events that the given webhook is subscribed to. isActive | boolean : A flag to activate or deactivate a webhook. description | string (optional): A short explantion of the webhook. Events Name Description repair.updated.repairStatus This event fires when the status of a repair is updated. The statuses include DRAFT, SUBMITTED, ASSIGNED, READY_TO_START, IN_PROGRESS, PENDING_REVIEW, BER, UNFIXABLE, COMPLETE, CLOSED, CANCELLED, ESCALATED. See the repair section of these docs for an explantion of each status.'
+      requestBody:
+        content:
+          application/json:
+            examples:
+              create-webhook:
+                summary: create webhook
+                value:
+                  url: https://www.url.com/webhooks
+                  meta:
+                    events:
+                    - repair_status_updated
+                  description: descripition
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - create webhook
+  /partner/partnerorganizationwebhooks/{id}:
+    get:
+      operationId: getWebhook
+      summary: get a webhook
+      tags:
+      - Webhooks
+      description: Get a singular webhook by id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Resource id
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - get a webhook
+    put:
+      operationId: updateWebhook
+      summary: update webhook
+      tags:
+      - Webhooks
+      description: 'This endpoint will return the updated webhook. The properties that may be updated are explained in detail in the POST create a webhook documentation above. Those properties are: url, isActive, meta and description.'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Resource id
+      requestBody:
+        content:
+          application/json:
+            examples:
+              update-webhook:
+                summary: update webhook
+                value:
+                  url: www.url.com/testwebhooks
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - update webhook
+    delete:
+      operationId: deleteWebhook
+      summary: delete a webhook
+      tags:
+      - Webhooks
+      description: The webhooks DELETE endpoint will remove a webhook record from the database. It is a hard delete, no record of url, meta, etc will remain after making this request.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Resource id
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - delete a webhook
+components:
+  securitySchemes:
+    jwtToken:
+      type: apiKey
+      in: header
+      name: token
+      description: JWT passed in a `token` header with each request. Access tokens expire after 30 days, refresh tokens after 60 days; partner-scoped API access tokens have a 10 year expiration and are generated / invalidated via the Upsie Partner Portal.
+externalDocs:
+  description: Official Postman documentation (api.upsie.com/docs redirects here)
+  url: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+x-generated: '2026-07-21'
+x-method: derived
+x-source: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK (Upsie Partner Network API Postman collection, fetched 2026-07-21)

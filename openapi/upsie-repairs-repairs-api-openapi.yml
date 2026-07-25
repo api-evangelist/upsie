@@ -1,0 +1,249 @@
+openapi: 3.0.3
+info:
+  title: Upsie Partner Network Authorization Repairs (/repairs) API
+  version: 1.0.0
+  description: 'Welcome to the Upsie Partner API! We are excited to offer our partners a secure and reliable way to access our repair network. Our API is designed to provide a simple and standardized interface for accessing the repair network while maintaining the highest level of security. It allows partner network members to easily request repairs, access details about all their repairs, and obtain other repair-related information. To ensure that all requests are authenticated and authorized, we use JSON Web Tokens (JWT) in our API. This feature ensures that only authorized users can access our network, and all requests remain secure and protected from malicious attacks. Additionally, our API adheres to industry-standard RESTful principles, making it easy to integrate with a wide range of platforms and applications. We are committed to providing our partners and customers with the best possible experience when using our API, and we welcome feedback and suggestions for improvement via email to dev@upsie.com . Accessing the API The production api is accessed at https://api.upsie.com and a sandbox environment is accessible at https://stage-api.upsie.com base production url: api.upsie.com base stage url: stage-api.upsie.com Authentication The Upsie Partner Network API uses JWT Tokens to authenticate requests. The token should be passed in a token header with each api request. Suggestions for safe use of JWT Tokens Protect your token: These API keys carry many privileges, so be sure to keep them secure. Do not share API keys in publicly accessible areas such as GitHub, client-side code, etc. Do not share your token with others and always keep it safe. Use HTTPS: Always use a secure connection when making API requests to prevent attackers from intercepting or tampering with the JWT token. Invalidate token when necessary: Always invalidate your accounts JWT token if you suspect one has been lost or stolen. Partner scoped API access tokens have 10 year expiration time. API tokens can be generated and invalidated via the partner portal. Contact us if you need access to the partner portal or to be allowed API access.'
+  contact:
+    email: dev@upsie.com
+servers:
+- url: https://api.upsie.com
+  description: Production
+- url: https://stage-api.upsie.com
+  description: Sandbox / stage
+tags:
+- name: Repairs (/repairs)
+paths:
+  /partner/repairs:
+    post:
+      operationId: createRepair
+      summary: Create a Repair (all-in-one example)
+      tags:
+      - Repairs (/repairs)
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Create-a-Repair--all-in-one-example-:
+                summary: Create a Repair (all-in-one example)
+                value:
+                  requestedTiming: ASAP
+                  customer:
+                    firstName: Jane
+                    lastName: Doe
+                    phoneNumber: '5554443333'
+                    email: jane.doe@example.com
+                  authorizedLimit: 12500
+                  category: Smartphones
+                  meta:
+                    policyNumber: byUs483js
+                    model: iPhone 12 mini
+                    serial: abc12345
+                    imei: '123456789012345'
+                    color: black
+                    storage: 256gb
+                  repairLocationDetails:
+                    address: 1 Green Ave, 55105
+                    radiusInMiles: 50
+                  items:
+                  - repairItemTemplateId: 3
+                  - description: Front Screen Replacement
+                  - description: rear screen rebuffering
+              Create-a-Repair--smartphone-example-:
+                summary: Create a Repair (smartphone example)
+                value:
+                  requestedTiming: ASAP
+                  customer:
+                    firstName: Jane
+                    lastName: Doe
+                    phoneNumber: '5554443333'
+                    email: jane.doe@example.com
+                  authorizedLimit: 12500
+                  category: Smartphones
+                  meta:
+                    policyNumber: rwJLHdNo
+                    model: iPhone 12 mini
+                    serial: abc12345
+                    imei: '123456789012345'
+                    color: black
+                    storage: 256gb
+                  repairLocationDetails:
+                    address: 3 yellow Ave, 55105
+                    radiusInMiles: 50
+              Create-a-Repair--minimal-example-:
+                summary: Create a Repair (minimal example)
+                value:
+                  comments: it broke
+                  repairStatus: DRAFT
+                  requestedTimingId: 1
+                  requesterId: 1
+                  customerId: 67518
+                  warrantyId: 71010
+                  categoryId: 1
+                  meta:
+                    policyNumber: byUs483js
+                    serial: abc12345
+                    imei: '123456789012345'
+                    color: black
+                    storage: 256gb
+                  repairLocationDetails:
+                    postalCode: '55105'
+                    address: 1 Green Ave
+                    radiusInMiles: 50
+      responses:
+        '200':
+          description: Create a Repair (all-in-one example)
+          content:
+            application/json:
+              examples:
+                Create-a-Repair--all-in-one-example-:
+                  summary: Create a Repair (all-in-one example)
+                  value:
+                    id: 24
+                    identifier: U0017
+                    requestedAt: '2023-04-18T17:36:18.083Z'
+                    repairStatus: DRAFT
+                    assignmentStatus: PENDING
+                    paymentStatus: null
+                    repairLocationDetails:
+                      address: 1 Green Ave, 55105
+                      radiusInMiles: 50
+                    comments: null
+                    meta:
+                      policyNumber: byUs483js
+                      model: iPhone 12 mini
+                      serial: abc12345
+                      imei: '123456789012345'
+                      color: black
+                      storage: 256gb
+                    categoryId: 4
+                    repairSourceId: 1
+                    authorizedLimit: 12500
+                    customerId: 87141
+                    allowEditingCustomer: false
+                    requestedTimingId: 1
+                    smartphoneId: 276
+                    activeAssignmentId: null
+                    warrantyId: null
+                    createdAt: '2023-04-18T17:36:18.083Z'
+                    modifiedAt: '2023-04-18T17:36:18.083Z'
+                    wasCancelled: null
+                    estCompleteDate: null
+                    intakeData: null
+                    completedAt: null
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Create a Repair (all-in-one example)
+      - Create a Repair (smartphone example)
+      - Create a Repair (minimal example)
+    put:
+      operationId: createRepairPut
+      summary: Create a Repair (non-phone example)
+      tags:
+      - Repairs (/repairs)
+      description: Many of the attributes in the repair object are nullable or assigned at creation or update. Below is a sample request body that satisfies the necessary requirements for repair creation.
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Create-a-Repair--non-phone-example-:
+                summary: Create a Repair (non-phone example)
+                value:
+                  requestedTiming: ASAP
+                  customer:
+                    firstName: Jane
+                    lastName: Doe
+                    phoneNumber: '5554443333'
+                    email: jane.doe@example.com
+                  authorizedLimit: 12500
+                  category: Tablets
+                  meta:
+                    model: iPad Air
+                    serial: xyz98765
+                    color: black
+                    storage: 512gb
+                  repairLocationDetails:
+                    address: 370 Wabasha St N, 55102
+                    radiusInMiles: 50
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Create a Repair (non-phone example)
+    get:
+      operationId: listRepairs
+      summary: Get All Repairs
+      tags:
+      - Repairs (/repairs)
+      description: This endpoint returns all repairs regardless of any given status or attriibute. Filtering can be done client side or via query params. Documentation of the query param syntax used by the Upsie Repair Network API can be found below. Examples are included in the request Params tab. Please note that these params serve as examples only. They will not return any results unless matching data has been created for this organization. In order to test the included query params, create data such that the query is satisfied.
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Get All Repairs
+  /partner/repairs/{id}:
+    get:
+      operationId: getRepair
+      summary: Get One Repair
+      tags:
+      - Repairs (/repairs)
+      description: This endpoint will return a singular repair object. Include the repair identifier that was returned on repair creation as a query param (as seen in the example request) or simply append to the url (i.e. partner/repairs/
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Repair id or identifier
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Get One Repair
+    put:
+      operationId: updateRepair
+      summary: Update Repair
+      tags:
+      - Repairs (/repairs)
+      description: This endpoint will return a singular repair object. Include the repair identifier that was returned on repair creation as a query param (as seen in the example request) or simply append to the url (i.e. partner/repairs/
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Repair id or identifier
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Update-Repair:
+                summary: Update Repair
+                value:
+                  repairStatus: SUBMITTED
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Update Repair
+components:
+  securitySchemes:
+    jwtToken:
+      type: apiKey
+      in: header
+      name: token
+      description: JWT passed in a `token` header with each request. Access tokens expire after 30 days, refresh tokens after 60 days; partner-scoped API access tokens have a 10 year expiration and are generated / invalidated via the Upsie Partner Portal.
+externalDocs:
+  description: Official Postman documentation (api.upsie.com/docs redirects here)
+  url: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+x-generated: '2026-07-21'
+x-method: derived
+x-source: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK (Upsie Partner Network API Postman collection, fetched 2026-07-21)
