@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: searched
+description: >-
+  Results of probing the /.well-known/ discovery surface on Upsie's website and
+  API hosts. Status is the HTTP code observed at fetch time (2026-07-21). No
+  well-known documents are published; upsie.com/robots.txt (200) revealed the
+  content-api.upsie.com host (headless CMS sitemap origin), and
+  api.upsie.com/docs 302-redirects to the public Postman documentation.
+hosts:
+  - host: https://upsie.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+      - path: /security.txt
+        status: 404
+      - path: /robots.txt
+        status: 200
+        note: "Sitemap: https://content-api.upsie.com/sitemap.xml"
+  - host: https://api.upsie.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /openapi.json
+        status: 404
+      - path: /swagger.json
+        status: 404
+      - path: /docs
+        status: 302
+        note: redirects to https://documenter.getpostman.com/view/16328390/2s8ZDeUykK

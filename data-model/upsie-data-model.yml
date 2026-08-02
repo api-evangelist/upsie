@@ -1,0 +1,37 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  Derived from openapi/upsie-partner-network-openapi.yml — the documented
+  request/response examples of the Upsie Partner Network API (id-reference
+  fields such as categoryId, customerId, repairItemTemplateId) and the folder
+  descriptions of the official Postman collection.
+docs: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+notation: >-
+  relationships use has_one / has_many / belongs_to with the foreign-key field
+  name; direction is from the entity that owns the reference.
+
+entities:
+  - {name: Repair, description: Central object of the repair network; created as DRAFT, submitted as SUBMITTED. Addressable by numeric id or string identifier (e.g. U0017).}
+  - {name: RepairItem, description: A line of work on a repair (e.g. Front Screen Replacement); references a template or a free-text description.}
+  - {name: RepairItemTemplate, description: Quick-pick common repairs for a category.}
+  - {name: RepairAssignment, description: Assignment of a repair to a performing partner; accessible to repair-performing partners only.}
+  - {name: RepairNote, description: Communication attached to a repair (from Upsie, the repair source, customer, or partner org).}
+  - {name: RepairCategory, description: Category a repair belongs to (e.g. Smartphones); category ids select repair item templates.}
+  - {name: Customer, description: The end customer a repair is performed for (firstName, lastName, phoneNumber, email).}
+  - {name: PartnerOrganizationWebhook, description: Webhook subscription forwarding events (e.g. repair_status_updated) to a partner URL.}
+  - {name: RepairSource, description: Originator of the repair request (repairSourceId on the repair).}
+  - {name: Warranty, description: Optional warranty linked to a repair (warrantyId, nullable in documented examples).}
+
+relationships:
+  - {from: Repair, rel: belongs_to, to: RepairCategory, via: categoryId}
+  - {from: Repair, rel: belongs_to, to: Customer, via: customerId}
+  - {from: Repair, rel: belongs_to, to: RepairSource, via: repairSourceId}
+  - {from: Repair, rel: belongs_to, to: Warranty, via: warrantyId}
+  - {from: Repair, rel: has_one, to: RepairAssignment, via: activeAssignmentId}
+  - {from: Repair, rel: has_many, to: RepairItem, via: items}
+  - {from: Repair, rel: has_many, to: RepairNote, via: repair_id}
+  - {from: RepairItem, rel: belongs_to, to: Repair, via: repairId}
+  - {from: RepairItem, rel: belongs_to, to: RepairItemTemplate, via: repairItemTemplateId}
+  - {from: RepairItemTemplate, rel: belongs_to, to: RepairCategory, via: category_id}
+  - {from: RepairAssignment, rel: belongs_to, to: Repair, via: repair_id}
+  - {from: RepairNote, rel: belongs_to, to: Repair, via: repair_id}

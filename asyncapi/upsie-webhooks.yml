@@ -1,0 +1,48 @@
+generated: '2026-07-21'
+method: searched
+source: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+type: Webhooks
+description: >-
+  Upsie Partner Network API webhook surface, captured from the official Postman
+  documentation ("Listen for events and forward them to your application").
+  Upsie publishes no AsyncAPI document; this artifact records the documented
+  webhook-management endpoints and the event name observed in the documented
+  request examples. Webhooks are used with a partner API access token.
+management:
+  base_path: /partner/partnerorganizationwebhooks
+  auth: JWT `token` header (see authentication/upsie-authentication.yml)
+  endpoints:
+    - method: GET
+      path: /partner/partnerorganizationwebhooks/
+      operation: listWebhooks
+    - method: GET
+      path: /partner/partnerorganizationwebhooks/{id}
+      operation: getWebhook
+    - method: POST
+      path: /partner/partnerorganizationwebhooks
+      operation: createWebhook
+    - method: PUT
+      path: /partner/partnerorganizationwebhooks/{id}
+      operation: updateWebhook
+    - method: DELETE
+      path: /partner/partnerorganizationwebhooks/{id}
+      operation: deleteWebhook
+subscription_shape:
+  example:
+    url: https://www.url.com/webhooks
+    meta:
+      events: [repair_status_updated]
+    description: descripition
+  fields:
+    - name: url
+      description: Destination URL events are forwarded to.
+    - name: meta.events
+      description: Array of event names to subscribe to.
+    - name: description
+      description: Free-text label for the subscription.
+events:
+  - name: repair_status_updated
+    description: >-
+      Fired when a repair's status changes; the only event name published in
+      the documented examples.
+source_spec: openapi/upsie-partner-network-openapi.yml

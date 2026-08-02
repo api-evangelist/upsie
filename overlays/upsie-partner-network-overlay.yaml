@@ -1,0 +1,36 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Upsie Partner Network API
+  version: 1.0.0
+extends: openapi/upsie-partner-network-openapi.yml
+x-generated: '2026-07-21'
+x-method: generated
+actions:
+  - target: $.info
+    update:
+      x-apievangelist:
+        provider: upsie
+        harvested: '2026-07-21'
+        source: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+        notes: >-
+          Spec derived from the official Postman collection; the provider
+          publishes no first-party OpenAPI. Error responses, pagination, and
+          rate limits are undocumented on the public surface.
+  - target: $.info
+    update:
+      x-artifacts:
+        authentication: authentication/upsie-authentication.yml
+        conventions: conventions/upsie-conventions.yml
+        webhooks: asyncapi/upsie-webhooks.yml
+        data-model: data-model/upsie-data-model.yml
+        sandbox: sandbox/upsie-sandbox.yml
+  - target: $.paths['/partner/repairs'].post
+    update:
+      x-lifecycle-note: >-
+        Repairs are created as DRAFT; submit by PUT /partner/repairs/{id} with
+        repairStatus SUBMITTED, after which core attributes become read-only
+        for the requestor.
+  - target: $.paths['/partner/partnerorganizationwebhooks'].post
+    update:
+      x-events:
+        - repair_status_updated

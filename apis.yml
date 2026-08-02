@@ -1,7 +1,15 @@
 aid: upsie
 name: Upsie
-description: Upsie is a company surfaced as a portfolio company of techstars and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Upsie is a direct-to-consumer warranty company offering affordable, transparent
+  extended-warranty and protection plans for smartphones, laptops, TVs, appliances,
+  and other consumer electronics, positioning itself as "the new way to warranty"
+  against overpriced retailer protection plans. Alongside its consumer products,
+  Upsie operates an independent repair network and publishes the Upsie Partner
+  Network API — a JWT-authenticated REST API (api.upsie.com, documented via a
+  public Postman collection) that lets repair-network partners create and manage
+  repairs, repair items, notes, assignments, and categories, and subscribe to
+  webhook events such as repair status updates.
 url: https://raw.githubusercontent.com/api-evangelist/upsie/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,17 +17,181 @@ x-backed-by:
 - techstars
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
+image: https://res.cloudinary.com/upsie/image/upload/f_auto,fl_lossy,q_auto/v1635433345/Upsie_Badge.png
 tags:
 - Company
-apis: []
+- Warranties
+- Protection Plans
+- Consumer Electronics
+- Repairs
+- Insurance
+apis:
+- aid: upsie:upsie-authorization-api
+  name: Upsie Authorization API
+  description: The Authorization API from Upsie — 5 operation(s) for authorization.
+  humanURL: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+  baseURL: https://api.upsie.com
+  tags:
+  - Authorization
+  properties:
+  - type: OpenAPI
+    url: openapi/upsie-authorization-api-openapi.yml
+  - type: Documentation
+    url: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+- aid: upsie:upsie-repair-assignments-repairassignments-api
+  name: Upsie Repair Assignments (/repairassignments) API
+  description: >-
+    The Repair Assignments (/repairassignments) API from Upsie — 1 operation(s) for repair assignments
+    (/repairassignments).
+  humanURL: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+  baseURL: https://api.upsie.com
+  tags:
+  - Repair Assignments (/repairassignments)
+  properties:
+  - type: OpenAPI
+    url: openapi/upsie-repair-assignments-repairassignments-api-openapi.yml
+  - type: Documentation
+    url: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+- aid: upsie:upsie-repair-categories-api
+  name: Upsie Repair Categories API
+  description: The Repair Categories API from Upsie — 1 operation(s) for repair categories.
+  humanURL: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+  baseURL: https://api.upsie.com
+  tags:
+  - Repair Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/upsie-repair-categories-api-openapi.yml
+  - type: Documentation
+    url: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+- aid: upsie:upsie-repair-item-templates-api
+  name: Upsie Repair Item Templates API
+  description: The Repair Item Templates API from Upsie — 1 operation(s) for repair item templates.
+  humanURL: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+  baseURL: https://api.upsie.com
+  tags:
+  - Repair Item Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/upsie-repair-item-templates-api-openapi.yml
+  - type: Documentation
+    url: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+- aid: upsie:upsie-repair-items-repairitems-api
+  name: Upsie Repair Items (/repairitems) API
+  description: >-
+    The Repair Items (/repairitems) API from Upsie — 1 operation(s) for repair items (/repairitems).
+  humanURL: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+  baseURL: https://api.upsie.com
+  tags:
+  - Repair Items (/repairitems)
+  properties:
+  - type: OpenAPI
+    url: openapi/upsie-repair-items-repairitems-api-openapi.yml
+  - type: Documentation
+    url: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+- aid: upsie:upsie-repair-notes-api
+  name: Upsie Repair Notes API
+  description: The Repair Notes API from Upsie — 1 operation(s) for repair notes.
+  humanURL: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+  baseURL: https://api.upsie.com
+  tags:
+  - Repair Notes
+  properties:
+  - type: OpenAPI
+    url: openapi/upsie-repair-notes-api-openapi.yml
+  - type: Documentation
+    url: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+- aid: upsie:upsie-repairs-repairs-api
+  name: Upsie Repairs (/repairs) API
+  description: The Repairs (/repairs) API from Upsie — 2 operation(s) for repairs (/repairs).
+  humanURL: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+  baseURL: https://api.upsie.com
+  tags:
+  - Repairs (/repairs)
+  properties:
+  - type: OpenAPI
+    url: openapi/upsie-repairs-repairs-api-openapi.yml
+  - type: Documentation
+    url: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+- aid: upsie:upsie-webhooks-api
+  name: Upsie Webhooks API
+  description: The Webhooks API from Upsie — 2 operation(s) for webhooks.
+  humanURL: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+  baseURL: https://api.upsie.com
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/upsie-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/upsie-agentic-access.yml
+- type: DomainSecurity
+  url: security/upsie-domain-security.yml
 - type: Website
   url: https://upsie.com/
+- type: Documentation
+  url: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+- type: APIReference
+  url: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+- type: Postman
+  url: postman/upsie-partner-network-api.postman_collection.json
+- type: GitHubOrganization
+  url: https://github.com/upsie
+- type: Support
+  url: https://upsie.com/contact
+- type: HelpCenter
+  url: https://upsie.com/faq
+- type: TermsOfService
+  url: https://app.termly.io/document/terms-of-use-for-saas/e4aa24cb-f6f6-4ebd-95bc-5e963adcacb1
+- type: PrivacyPolicy
+  url: https://upsie.com/privacy-policy
+- type: SignUp
+  url: https://upsie.com/create-account
+- type: Authentication
+  url: authentication/upsie-authentication.yml
+- type: Sandbox
+  url: sandbox/upsie-sandbox.yml
+- type: Conventions
+  url: conventions/upsie-conventions.yml
+- type: Webhooks
+  url: asyncapi/upsie-webhooks.yml
+- type: DataModel
+  url: data-model/upsie-data-model.yml
+- type: Conformance
+  url: conformance/upsie-conformance.yml
+- type: WellKnown
+  url: well-known/upsie-well-known.yml
+- type: MCPServer
+  url: mcp/upsie-mcp.yml
+- type: LLMsTxt
+  url: llms/upsie-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 17
+  pass: local-v1

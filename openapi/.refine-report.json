@@ -1,0 +1,28 @@
+{
+  "provider": "upsie",
+  "sources": [
+    "upsie-authorization-api-openapi.yml",
+    "upsie-repair-assignments-repairassignments-api-openapi.yml",
+    "upsie-repair-categories-api-openapi.yml",
+    "upsie-repair-item-templates-api-openapi.yml",
+    "upsie-repair-items-repairitems-api-openapi.yml",
+    "upsie-repair-notes-api-openapi.yml",
+    "upsie-repairs-repairs-api-openapi.yml",
+    "upsie-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "upsie-authorization-api-openapi.yml",
+    "upsie-repair-assignments-repairassignments-api-openapi.yml",
+    "upsie-repair-categories-api-openapi.yml",
+    "upsie-repair-item-templates-api-openapi.yml",
+    "upsie-repair-items-repairitems-api-openapi.yml",
+    "upsie-repair-notes-api-openapi.yml",
+    "upsie-repairs-repairs-api-openapi.yml",
+    "upsie-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

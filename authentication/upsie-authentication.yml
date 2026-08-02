@@ -1,0 +1,54 @@
+generated: '2026-07-21'
+method: searched
+source: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+description: >-
+  Authentication profile for the Upsie Partner Network API, captured from the
+  official Postman documentation (api.upsie.com/docs). The API authenticates
+  every request with a JSON Web Token passed in a custom `token` header. Tokens
+  are obtained by partner-user login (username/password) and then exchanged for
+  longer-lived API access and refresh tokens; partner-scoped API access tokens
+  can also be generated and invalidated through the Upsie Partner Portal.
+summary:
+  types: [apiKey]
+  api_key_in: [header]
+  header_name: token
+  token_format: JWT
+schemes:
+  - name: jwtToken
+    type: apiKey
+    in: header
+    parameter: token
+    format: JWT
+    sources: [openapi/upsie-partner-network-openapi.yml]
+    notes: >-
+      JWT passed in a `token` header with each API request. Documented token
+      lifetimes: access tokens 30 days, refresh tokens 60 days, partner-scoped
+      API access tokens 10 years. Tokens carry an encoded expiration date and
+      can be invalidated at any time via POST /partner/auth/invalidateapitokens
+      or the Partner Portal.
+flows:
+  - step: 1
+    operation: partnerLogin
+    request: POST /partner/auth/login
+    detail: Partner user login with username/password returns a user JWT.
+  - step: 2
+    operation: generateApiAccessToken
+    request: POST /partner/auth/apiaccess
+    detail: Exchange the user token for an API access token (30-day expiry).
+  - step: 3
+    operation: generateApiRefreshToken
+    request: POST /partner/auth/apirefresh
+    detail: Refresh tokens (60-day expiry) mint new access tokens.
+  - step: 4
+    operation: whoAmI
+    request: GET /partner/auth/whoami
+    detail: Verify the identity bound to the presented token.
+  - step: 5
+    operation: invalidateApiTokens
+    request: POST /partner/auth/invalidateapitokens
+    detail: Invalidate the account's API tokens if lost or stolen.
+guidance:
+  - Do not share API keys in publicly accessible areas such as GitHub or client-side code.
+  - Always use HTTPS when making API requests.
+  - Invalidate tokens immediately if one is suspected lost or stolen.
+contact: dev@upsie.com

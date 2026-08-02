@@ -1,0 +1,1257 @@
+{
+  "info": {
+    "_postman_id": "dce37152-5d04-45c0-ae95-0513333cfe1e",
+    "name": "Upsie Partner Network API",
+    "description": "<html><head></head><body><p>Welcome to the Upsie Partner API! We are excited to offer our partners a secure and reliable way to access our repair network. Our API is designed to provide a simple and standardized interface for accessing the repair network while maintaining the highest level of security. It allows partner network members to easily request repairs, access details about all their repairs, and obtain other repair-related information.</p>\n<p>To ensure that all requests are authenticated and authorized, we use JSON Web Tokens (JWT) in our API. This feature ensures that only authorized users can access our network, and all requests remain secure and protected from malicious attacks. Additionally, our API adheres to industry-standard RESTful principles, making it easy to integrate with a wide range of platforms and applications.</p>\n<p>We are committed to providing our partners and customers with the best possible experience when using our API, and we welcome feedback and suggestions for improvement via email to <a href=\"mailto:dev@upsie.com\">dev@upsie.com</a>.</p>\n<h2 id=\"accessing-the-api\">Accessing the API</h2>\n<p>The production api is accessed at <a href=\"https://api.upsie.com\">https://api.upsie.com</a> and a sandbox environment is accessible at <a href=\"https://stage-api.upsie.com\">https://stage-api.upsie.com</a></p>\n<blockquote>\n<p>base production url: api.upsie.com<br>base stage url: stage-api.upsie.com </p>\n</blockquote>\n<h2 id=\"authentication\">Authentication</h2>\n<p>The Upsie Partner Network API uses <a href=\"https://jwt.io/introduction\">JWT Tokens</a> to authenticate requests.</p>\n<p>The token should be passed in a <code>token</code> header with each api request.</p>\n<p>Suggestions for safe use of JWT Tokens</p>\n<ol>\n<li>Protect your token: These API keys carry many privileges, so be sure to keep them secure. Do not share API keys in publicly accessible areas such as GitHub, client-side code, etc. Do not share your token with others and always keep it safe.</li>\n<li>Use HTTPS: Always use a secure connection when making API requests to prevent attackers from intercepting or tampering with the JWT token.</li>\n<li>Invalidate token when necessary: Always invalidate your accounts JWT token if you suspect one has been lost or stolen.</li>\n</ol>\n<p><strong>Partner scoped API access tokens have 10 year expiration</strong> time.</p>\n<p>API tokens can be generated and invalidated via the partner portal.</p>\n<p>Contact us if you need access to the partner portal or to be allowed API access.</p>\n</body></html>",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+    "toc": [],
+    "owner": "16328390",
+    "collectionId": "dce37152-5d04-45c0-ae95-0513333cfe1e",
+    "publishedId": "2s8ZDeUykK",
+    "public": true,
+    "customColor": {
+      "top-bar": "FFFFFF",
+      "right-sidebar": "303030",
+      "highlight": "EF5B25"
+    },
+    "publishDate": "2023-02-02T18:05:33.000Z"
+  },
+  "item": [
+    {
+      "name": "Partner endpoints (/partner)",
+      "item": [
+        {
+          "name": "Repairs (/repairs)",
+          "item": [
+            {
+              "name": "Create a Repair (all-in-one example)",
+              "id": "2406f169-c5b5-43b5-a101-9a589bae6419",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true,
+                "disabledSystemHeaders": {}
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"requestedTiming\": \"ASAP\", \n    \"customer\": {\n        \"firstName\": \"Jane\",\n        \"lastName\": \"Doe\",\n        \"phoneNumber\": \"5554443333\",\n        \"email\": \"jane.doe@example.com\"\n    },\n    \"authorizedLimit\": 12500,\n    \"category\": \"Smartphones\",\n    \"meta\": {\n        \"policyNumber\": \"byUs483js\",\n        \"model\": \"iPhone 12 mini\",\n        \"serial\": \"abc12345\",\n        \"imei\": \"123456789012345\",\n        \"color\": \"black\",\n        \"storage\": \"256gb\"\n    },\n    \"repairLocationDetails\": {\n        \"address\": \"1 Green Ave, 55105\",\n        \"radiusInMiles\": 50\n    },\n    \"items\": [\n        {\n            \"repairItemTemplateId\": 3\n        },\n        {\n            \"description\": \"Front Screen Replacement\"\n        },\n        {\n            \"description\": \"rear screen rebuffering\"\n        }\n    ]\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "{{api_host}}/partner/repairs",
+                "urlObject": {
+                  "path": [
+                    "partner",
+                    "repairs"
+                  ],
+                  "host": [
+                    "{{api_host}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                }
+              },
+              "response": [
+                {
+                  "id": "29cc0a42-03b0-4a86-89fd-f4c6893190cc",
+                  "name": "Create a Repair (all-in-one example)",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"requestedTiming\": \"ASAP\", \n    \"customer\": {\n        \"firstName\": \"Jane\",\n        \"lastName\": \"Doe\",\n        \"phoneNumber\": \"5554443333\",\n        \"email\": \"jane.doe@example.com\"\n    },\n    \"authorizedLimit\": 12500,\n    \"category\": \"Smartphones\",\n    \"meta\": {\n        \"policyNumber\": \"byUs483js\",\n        \"model\": \"iPhone 12 mini\",\n        \"serial\": \"abc12345\",\n        \"imei\": \"123456789012345\",\n        \"color\": \"black\",\n        \"storage\": \"256gb\"\n    },\n    \"repairLocationDetails\": {\n        \"address\": \"1 Green Ave, 55105\",\n        \"radiusInMiles\": 50\n    },\n    \"items\": [\n        {\n            \"repairItemTemplateId\": 3\n        },\n        {\n            \"description\": \"Front Screen Replacement\"\n        },\n        {\n            \"description\": \"rear screen rebuffering\"\n        }\n    ]\n}\n",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "{{api_host}}/partner/repairs"
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Date",
+                      "value": "Tue, 18 Apr 2023 17:36:18 GMT"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "x-request-id",
+                      "value": "994b3e18-22dc-4104-9a71-710a2ff17656"
+                    },
+                    {
+                      "key": "x-envoy-upstream-service-time",
+                      "value": "269"
+                    },
+                    {
+                      "key": "CF-Cache-Status",
+                      "value": "DYNAMIC"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "cloudflare"
+                    },
+                    {
+                      "key": "CF-RAY",
+                      "value": "7b9eab4e7e8b26bb-MSP"
+                    },
+                    {
+                      "key": "Content-Encoding",
+                      "value": "gzip"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n    \"id\": 24,\n    \"identifier\": \"U0017\",\n    \"requestedAt\": \"2023-04-18T17:36:18.083Z\",\n    \"repairStatus\": \"DRAFT\",\n    \"assignmentStatus\": \"PENDING\",\n    \"paymentStatus\": null,\n    \"repairLocationDetails\": {\n        \"address\": \"1 Green Ave, 55105\",\n        \"radiusInMiles\": 50\n    },\n    \"comments\": null,\n    \"meta\": {\n        \"policyNumber\": \"byUs483js\",\n        \"model\": \"iPhone 12 mini\",\n        \"serial\": \"abc12345\",\n        \"imei\": \"123456789012345\",\n        \"color\": \"black\",\n        \"storage\": \"256gb\"\n    },\n    \"categoryId\": 4,\n    \"repairSourceId\": 1,\n    \"authorizedLimit\": 12500,\n    \"customerId\": 87141,\n    \"allowEditingCustomer\": false,\n    \"requestedTimingId\": 1,\n    \"smartphoneId\": 276,\n    \"activeAssignmentId\": null,\n    \"warrantyId\": null,\n    \"createdAt\": \"2023-04-18T17:36:18.083Z\",\n    \"modifiedAt\": \"2023-04-18T17:36:18.083Z\",\n    \"wasCancelled\": null,\n    \"estCompleteDate\": null,\n    \"intakeData\": null,\n    \"completedAt\": null\n}"
+                }
+              ],
+              "_postman_id": "2406f169-c5b5-43b5-a101-9a589bae6419"
+            },
+            {
+              "name": "Create a Repair (smartphone example)",
+              "id": "9903bdbc-1897-43c7-801c-11f7f703dc09",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true,
+                "disabledSystemHeaders": {}
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"requestedTiming\": \"ASAP\", \n    \"customer\": {\n        \"firstName\": \"Jane\",\n        \"lastName\": \"Doe\",\n        \"phoneNumber\": \"5554443333\",\n        \"email\": \"jane.doe@example.com\"\n    },\n    \"authorizedLimit\": 12500,\n    \"category\": \"Smartphones\",\n    \"meta\": {\n        \"policyNumber\": \"rwJLHdNo\",\n        \"model\": \"iPhone 12 mini\",\n        \"serial\": \"abc12345\",\n        \"imei\": \"123456789012345\",\n        \"color\": \"black\",\n        \"storage\": \"256gb\"\n    },\n    \"repairLocationDetails\": {\n        \"address\": \"3 yellow Ave, 55105\",\n        \"radiusInMiles\": 50\n    }\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "{{api_host}}/partner/repairs?includes=customer",
+                "description": "<p>Many of the attributes in the repair object are nullable or assigned at creation or update. Below is a sample request body that satisfies the necessary requirements for repair creation.</p>\n",
+                "urlObject": {
+                  "path": [
+                    "partner",
+                    "repairs"
+                  ],
+                  "host": [
+                    "{{api_host}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includes",
+                      "value": "customer"
+                    }
+                  ],
+                  "variable": []
+                }
+              },
+              "response": [],
+              "_postman_id": "9903bdbc-1897-43c7-801c-11f7f703dc09"
+            },
+            {
+              "name": "Create a Repair (non-phone example)",
+              "id": "eab4d94c-2430-4ba6-9666-3618a19ec426",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true,
+                "disabledSystemHeaders": {}
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"requestedTiming\": \"ASAP\", \n    \"customer\": {\n        \"firstName\": \"Jane\",\n        \"lastName\": \"Doe\",\n        \"phoneNumber\": \"5554443333\",\n        \"email\": \"jane.doe@example.com\"\n    },\n    \"authorizedLimit\": 12500,\n    \"category\": \"Tablets\",\n    \"meta\": {\n        \"model\": \"iPad Air\",\n        \"serial\": \"xyz98765\",\n        \"color\": \"black\",\n        \"storage\": \"512gb\"\n    },\n    \"repairLocationDetails\": {\n        \"address\": \"370 Wabasha St N, 55102\",\n        \"radiusInMiles\": 50\n    }\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "{{api_host}}/partner/repairs",
+                "description": "<p>Many of the attributes in the repair object are nullable or assigned at creation or update. Below is a sample request body that satisfies the necessary requirements for repair creation.</p>\n",
+                "urlObject": {
+                  "path": [
+                    "partner",
+                    "repairs"
+                  ],
+                  "host": [
+                    "{{api_host}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                }
+              },
+              "response": [],
+              "_postman_id": "eab4d94c-2430-4ba6-9666-3618a19ec426"
+            },
+            {
+              "name": "Create a Repair (minimal example)",
+              "id": "5bbc8788-2f6f-4588-84f7-1f9f995e53ac",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true,
+                "disabledSystemHeaders": {}
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"comments\": \"it broke\",\n    \"repairStatus\": \"DRAFT\",\n    \"requestedTimingId\": 1,\n    \"requesterId\": 1,\n    \"customerId\": 67518,\n    \"warrantyId\": 71010,\n    \"categoryId\": 1,\n    \"meta\": {\n        \"policyNumber\": \"byUs483js\",\n        \"serial\": \"abc12345\",\n        \"imei\": \"123456789012345\",\n        \"color\": \"black\",\n        \"storage\": \"256gb\"\n    },\n    \"repairLocationDetails\": {\n        \"postalCode\": \"55105\",\n        \"address\": \"1 Green Ave\",\n        \"radiusInMiles\": 50\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "{{api_host}}/partner/repairs",
+                "description": "<p>Many of the attributes in the repair object are nullable or assigned at creation or update. Below is a sample request body that satisfies the necessary requirements for repair creation.</p>\n",
+                "urlObject": {
+                  "path": [
+                    "partner",
+                    "repairs"
+                  ],
+                  "host": [
+                    "{{api_host}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                }
+              },
+              "response": [],
+              "_postman_id": "5bbc8788-2f6f-4588-84f7-1f9f995e53ac"
+            },
+            {
+              "name": "Get All Repairs",
+              "id": "273c7432-f0f3-46cf-a2eb-0c24f82757af",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{api_host}}/partner/repairs",
+                "description": "<p>This endpoint returns all repairs regardless of any given status or attriibute. Filtering can be done client side or via query params. Documentation of the query param syntax used by the Upsie Repair Network API can be found below. Examples are included in the request <code>Params</code> tab.</p>\n<p>Please note that these params serve as examples only. They will not return any results unless matching data has been created for this organization. In order to test the included query params, create data such that the query is satisfied.</p>\n",
+                "urlObject": {
+                  "path": [
+                    "partner",
+                    "repairs"
+                  ],
+                  "host": [
+                    "{{api_host}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                }
+              },
+              "response": [],
+              "_postman_id": "273c7432-f0f3-46cf-a2eb-0c24f82757af"
+            },
+            {
+              "name": "Get One Repair",
+              "id": "aae57742-3e9e-4fc5-aad4-6162c5c15975",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{api_host}}/partner/repairs/5",
+                "description": "<p>This endpoint will return a singular repair object. Include the repair identifier that was returned on repair creation as a query param (as seen in the example request) or simply append to the url (i.e. <code>partner/repairs/</code></p>\n",
+                "urlObject": {
+                  "path": [
+                    "partner",
+                    "repairs",
+                    "5"
+                  ],
+                  "host": [
+                    "{{api_host}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                }
+              },
+              "response": [],
+              "_postman_id": "aae57742-3e9e-4fc5-aad4-6162c5c15975"
+            },
+            {
+              "name": "Update Repair",
+              "id": "086c49e0-3654-4a06-8bbc-67db1936cbd8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"repairStatus\": \"SUBMITTED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "{{api_host}}/partner/repairs/5",
+                "description": "<p>This endpoint will return a singular repair object. Include the repair identifier that was returned on repair creation as a query param (as seen in the example request) or simply append to the url (i.e. <code>partner/repairs/</code></p>\n",
+                "urlObject": {
+                  "path": [
+                    "partner",
+                    "repairs",
+                    "5"
+                  ],
+                  "host": [
+                    "{{api_host}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                }
+              },
+              "response": [],
+              "_postman_id": "086c49e0-3654-4a06-8bbc-67db1936cbd8"
+            }
+          ],
+          "id": "041d26bd-dd47-4db7-87d0-7a71c725ec08",
+          "description": "<h3 id=\"repair-object\">Repair Object</h3>\n<p>The repair object is central to working with Upsie Repairs. Each repair contains one or more \"Repair Items\" (items property) which are the details of what aspects of the device are being requested to be repaired.</p>\n<p><strong>Attributes</strong></p>\n<hr />\n<p><strong>id</strong> | <em>number:</em> Unique numeric value assigned by database engine.</p>\n<hr />\n<p><strong>identifier</strong> | <em>string or guid</em>: Unique value assigned by platform.</p>\n<hr />\n<p><strong>requestedAt</strong> | <em>timestamp</em>: Date the repair was requested.</p>\n<hr />\n<p><strong>repairStatus</strong> | <em>enum</em>: Indicates state of repair.</p>\n<div class=\"click-to-expand-wrapper is-table-wrapper\"><table>\n<thead>\n<tr>\n<th><strong>enum</strong></th>\n<th><strong>description</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>DRAFT</td>\n<td>A new repair job - editable by repair source / requestor.</td>\n</tr>\n<tr>\n<td>SUBMITTED</td>\n<td>The repair has been submitted for repair, validated but has not yet been assigned a partner to fulfill the job.</td>\n</tr>\n<tr>\n<td>ASSIGNED</td>\n<td>The repair has been assigned to and accepted by a repair partner.</td>\n</tr>\n<tr>\n<td>READY_TO_START</td>\n<td>The repair is ready for the RSP to start after review</td>\n</tr>\n<tr>\n<td>IN_PROGRESS</td>\n<td>Work has begun on the repair.</td>\n</tr>\n<tr>\n<td>PENDING_REVIEW</td>\n<td>something happened with the repair that we need to pause the job for review.</td>\n</tr>\n<tr>\n<td>BER</td>\n<td>The device has been determined to be beyond economical repair.</td>\n</tr>\n<tr>\n<td>UNFIXABLE</td>\n<td>The device cannot be fixed.</td>\n</tr>\n<tr>\n<td>COMPLETE</td>\n<td>Repair has been completed but no payment has been made for services rendered.</td>\n</tr>\n<tr>\n<td>CLOSED</td>\n<td>Repair has been completed and payment has been made for services rendered.</td>\n</tr>\n<tr>\n<td>CANCELLED</td>\n<td>Repair order was cancelled.</td>\n</tr>\n<tr>\n<td>ESCELATED</td>\n<td>Repair needs special attention.</td>\n</tr>\n</tbody>\n</table>\n</div><hr />\n<p><strong>assignmentStatus</strong> | <em>enum</em>: Indicates state of repair assignment.</p>\n<p>[ASSIGNED, QUEUED, REQUESTED, ACCEPTED, REJECTED]</p>\n<hr />\n<p><strong>paymentStatus</strong> | <em>enum</em>: Indicates state of paymentr for a repair.</p>\n<p>[DEPOSIT_COLLECTED, INVOICE_READY, PAID_IN_FULL, REFUNDED]</p>\n<hr />\n<p><strong>repairLocationDetails</strong> | <em>object</em>: Address and coordinate data</p>\n<div class=\"click-to-expand-wrapper is-table-wrapper\"><table>\n<thead>\n<tr>\n<th><strong>Attribute</strong></th>\n<th><strong>Type</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>address</td>\n<td>string - Can minimally be a zipcode or up to a full address. if the value passed here resolves in google maps it will also work here.</td>\n</tr>\n<tr>\n<td>radiusInMiles</td>\n<td>number</td>\n</tr>\n</tbody>\n</table>\n</div><hr />\n<p><strong>location</strong> | <em>Point</em>: a <a href=\"https://github.com/caseycesari/geojson.js\">GeoJson</a> Point Object geocoded based on the repairLocationDetails address value.</p>\n<hr />\n<p><strong>comments</strong> | <em>string</em>: Customer's description of damage / incident.</p>\n<hr />\n<p><strong>meta</strong> | <em>jsonb</em>: metadata about the device and/or repair request</p>\n<p>the meta object is a flexible object that can accept any data you would like to attach to the repair. We have defined some field names to be used with specific meanings. Everything here is optional and you can extend this object as you wish beyond these.</p>\n<div class=\"click-to-expand-wrapper is-table-wrapper\"><table>\n<thead>\n<tr>\n<th><strong>Attribute</strong></th>\n<th><strong>Type</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>planIdentifier</td>\n<td>[optional] string - identifier of a source warranty or protection plan</td>\n</tr>\n<tr>\n<td>imei</td>\n<td>[optional] string</td>\n</tr>\n<tr>\n<td>serial</td>\n<td>[optional] string - serial number of device to be repaired</td>\n</tr>\n<tr>\n<td>brandName</td>\n<td>[optional] string - brand name of the device</td>\n</tr>\n<tr>\n<td>model</td>\n<td>[optional] string - model name of the device</td>\n</tr>\n<tr>\n<td>color</td>\n<td>[optional] string - the color of the device</td>\n</tr>\n<tr>\n<td>storage</td>\n<td>[optional] string</td>\n</tr>\n</tbody>\n</table>\n</div><hr />\n<p><strong>authorizedLimit</strong> | <em>number</em>: Max amount repair source is willing to pay for the repair. The value is expected as an integer of the number of cents in USD currency.</p>\n<hr />\n<p><strong>categoryId</strong> | <em>number</em>: Id for the category of items that includes the device. (i.e. if the device needing repair is an iPhone and <code>1</code> is the id for the smartphone category then this value will be <code>1</code>).</p>\n<hr />\n<p><strong>repairSourceId</strong> | <em>number</em>: Id of the organization from which the repair originates.</p>\n<hr />\n<p><strong>customerId</strong> | <em>number</em>: Id of the device owner.</p>\n<hr />\n<p><strong>requestedTimeId</strong> | <em>number</em>: Id associated with a time frame the customer has request for repair turnaround.</p>\n<hr />\n<p><strong>smartphoneId</strong> | <em>number</em>: Id for a device that is in the smartphone category.</p>\n<hr />\n<p><strong>activeAssignmentId</strong> | <em>number</em>: Id of the assignment record associated with this repair. Once a repair status is <code>ASSIGNED</code>, it will associate to an assignment record.</p>\n<hr />\n<p><strong>wasCancelled</strong> | <em>boolean</em>: Flag to indicate if the repair has been cancelled or not.</p>\n<hr />\n<p><strong>repairSource</strong> | <em>object</em>: All of the data associated with the organization</p>\n",
+          "_postman_id": "041d26bd-dd47-4db7-87d0-7a71c725ec08"
+        },
+        {
+          "name": "Repair Items (/repairitems)",
+          "item": [
+            {
+              "name": "Get All Repair Items",
+              "id": "07871b57-44eb-4538-9577-82eca31601dd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{api_host}}/partner/repairitems?where[repair_id]=22",
+                "urlObject": {
+                  "path": [
+                    "partner",
+                    "repairitems"
+                  ],
+                  "host": [
+                    "{{api_host}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "where[repair_id]",
+                      "value": "22"
+                    }
+                  ],
+                  "variable": []
+                }
+              },
+              "response": [],
+              "_postman_id": "07871b57-44eb-4538-9577-82eca31601dd"
+            },
+            {
+              "name": "Create A Repair Item",
+              "id": "3ad661cd-8c40-46e0-a268-96b85562dc75",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"repairId\": 5,\n    \"repairItemTemplateId\": 4\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "{{api_host}}/partner/repairitems",
+                "urlObject": {
+                  "path": [
+                    "partner",
+                    "repairitems"
+                  ],
+                  "host": [
+                    "{{api_host}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                }
+              },
+              "response": [],
+              "_postman_id": "3ad661cd-8c40-46e0-a268-96b85562dc75"
+            }
+          ],
+          "id": "e6180756-80b8-4d83-9dad-b48f61ffffd8",
+          "description": "<p>Repair Items are the main substance of the repair. They are related to repair item templates which serve as our \"quick pick\" lists of repairs in each category. If a specific template doesn't exist, an \"Other\" template is used which allows custom repair item descriptions.</p>\n",
+          "_postman_id": "e6180756-80b8-4d83-9dad-b48f61ffffd8"
+        },
+        {
+          "name": "Repair Assignments (/repairassignments)",
+          "item": [
+            {
+              "name": "Get All Repair Assignments",
+              "id": "ef7f3a65-171d-4d0a-9ce7-18cd5dc2827e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{api_host}}/partner/repairassignments",
+                "urlObject": {
+                  "path": [
+                    "partner",
+                    "repairassignments"
+                  ],
+                  "host": [
+                    "{{api_host}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                }
+              },
+              "response": [],
+              "_postman_id": "ef7f3a65-171d-4d0a-9ce7-18cd5dc2827e"
+            },
+            {
+              "name": "Get a Repair Assignment",
+              "id": "898db9e1-c50e-483c-81f2-f58db9fd48e6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{api_host}}/partner/repairassignments",
+                "urlObject": {
+                  "path": [
+                    "partner",
+                    "repairassignments"
+                  ],
+                  "host": [
+                    "{{api_host}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                }
+              },
+              "response": [],
+              "_postman_id": "898db9e1-c50e-483c-81f2-f58db9fd48e6"
+            }
+          ],
+          "id": "d1a256be-a248-4e1d-976a-b45c6413cb9a",
+          "description": "<p>Repair Assignments are accessable to our partners performing repairs only. Users and Organizations not setup to perform repairs cannot access this endpoint.</p>\n",
+          "_postman_id": "d1a256be-a248-4e1d-976a-b45c6413cb9a"
+        },
+        {
+          "name": "Repair Item Templates",
+          "item": [
+            {
+              "name": "Get All Repair Item Templates",
+              "id": "16e14b44-e48c-470e-9810-1cbc97959262",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{api_host}}/partner/repairitemtemplates",
+                "urlObject": {
+                  "path": [
+                    "partner",
+                    "repairitemtemplates"
+                  ],
+                  "host": [
+                    "{{api_host}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                }
+              },
+              "response": [],
+              "_postman_id": "16e14b44-e48c-470e-9810-1cbc97959262"
+            },
+            {
+              "name": "Get a Repair Item Template",
+              "id": "9a50ce57-c29e-487b-9df4-b427d8b6bcbc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{api_host}}/partner/repairitemtemplates?where[category_id]=4",
+                "urlObject": {
+                  "path": [
+                    "partner",
+                    "repairitemtemplates"
+                  ],
+                  "host": [
+                    "{{api_host}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "where[category_id]",
+                      "value": "4"
+                    }
+                  ],
+                  "variable": []
+                }
+              },
+              "response": [],
+              "_postman_id": "9a50ce57-c29e-487b-9df4-b427d8b6bcbc"
+            }
+          ],
+          "id": "dea94bdc-3c46-4547-a8da-2d4cda9d71a8",
+          "description": "<p>Repair Item Templates are common repairs for a given repair category (i.e. <code>Front Screen Replacement</code> in the <code>Smartphone</code> category). For imformation on how to access repair categories, see the documentation on the Repair Categories endpoint below.</p>\n<p>These templates can be added as Repair Items on a specific repair. Custom templates can be created for less common repairs.</p>\n<h3 id=\"repair-item-template-object\">Repair Item Template Object</h3>\n<p><strong>id</strong> | <em>number:</em> Unique numeric value assigned by database engine.</p>\n<p><strong>category_id</strong> | <em>number</em>: Unique id of the related category (i.e. <code>Smartphone</code>).</p>\n<p><strong>description</strong> | <em>string</em>: The type of repair associated with the record (i.e. <code>Front Screen Replacement</code>).</p>\n<p><strong>parts</strong> | <em>number</em>: The cost of the parts to complete the described repair.</p>\n<p><strong>labor</strong> | <em>number</em>: The cost of the labor to complete the described repair.</p>\n<p><strong>cost</strong> | <em>number</em>: The sum of parts and labor.</p>\n<p><strong>requires_consultation</strong> | <em>boolean</em>: Indicates if consultation is required to proceed with the repair.</p>\n<p><strong>allow_multiple</strong> | <em>boolean</em>: Indicates if a repair item can occur multiple times on a singular repair invoice.</p>\n<p><strong>allow_custom_description</strong> | <em>boolean</em>: indicates if the description (mentioned above) maybe editted.</p>\n",
+          "_postman_id": "dea94bdc-3c46-4547-a8da-2d4cda9d71a8"
+        },
+        {
+          "name": "Repair Notes",
+          "item": [
+            {
+              "name": "Get All Repair Notes",
+              "id": "81cad86e-1225-496d-84a3-7c22412c5252",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{api_host}}/partner/repairnotes?where[repairnotes__dot__repair_id]=13",
+                "urlObject": {
+                  "path": [
+                    "partner",
+                    "repairnotes"
+                  ],
+                  "host": [
+                    "{{api_host}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "where[repairnotes__dot__repair_id]",
+                      "value": "13"
+                    },
+                    {
+                      "disabled": true,
+                      "key": "",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                }
+              },
+              "response": [],
+              "_postman_id": "81cad86e-1225-496d-84a3-7c22412c5252"
+            },
+            {
+              "name": "Create Repair Note",
+              "id": "adee4ec0-97e2-410d-8397-0e9f15993d15",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"repairId\": 14,\n    \"message\": \"last one\",\n    \"alertCustomer\": false,\n    \"alertRepairPartner\": false,\n    \"alertRepairSource\": false,\n    \"alertInteral\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "{{api_host}}/partner/repairnotes",
+                "urlObject": {
+                  "path": [
+                    "partner",
+                    "repairnotes"
+                  ],
+                  "host": [
+                    "{{api_host}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                }
+              },
+              "response": [],
+              "_postman_id": "adee4ec0-97e2-410d-8397-0e9f15993d15"
+            }
+          ],
+          "id": "9c938919-6541-4cc4-87ed-0815a948b190",
+          "description": "<p>The Repair Notes endpoint returns the collection of communications associated with a repair. These notes might originate from Upsie, the repair source, customer or your organization.</p>\n<h3 id=\"repair-notes-object\">Repair Notes Object</h3>\n<p><strong>id</strong> | <em>number:</em> Unique numeric value assigned by database engine.</p>\n<p><strong>repair_id</strong> | <em>number</em>: Unique id of the repair related to the note.</p>\n<p><strong>author</strong> | <em>string</em>: Creator of the repair note record.</p>\n<p><strong>message</strong> | <em>string</em>: Contents of the repair note.</p>\n<p><strong>data</strong> | <em>jsonb</em>: Intake data associated with the note.</p>\n<p><strong>is_internal</strong> | <em>boolean</em>: Indicates if this is an Upsie generated message.</p>\n<p><strong>alert_internal</strong> | <em>boolean</em>: Indicates if Upsie should be alerted when the note is generated.</p>\n<p><strong>alert_repair_partner</strong> | <em>boolean</em>: Indicates if the organization performing the repair should be alerted when the note is generated.</p>\n<p><strong>alert_repair_source</strong> | <em>boolean</em>: Indicates if the organization that requested the repair should be alerted when the note is generated.</p>\n<p><strong>created_at</strong> | <em>timestamp</em>: When a given repair note record was created.</p>\n<p><strong>modified_at</strong> | <em>timestamp</em>: When a given repair note record was modified.</p>\n",
+          "_postman_id": "9c938919-6541-4cc4-87ed-0815a948b190"
+        },
+        {
+          "name": "Repair Categories",
+          "item": [
+            {
+              "name": "Get All Repair Categories",
+              "id": "17a65dc9-dc25-40d5-affb-2421b4f39c24",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{api_host}}/partner/repaircategories",
+                "urlObject": {
+                  "path": [
+                    "partner",
+                    "repaircategories"
+                  ],
+                  "host": [
+                    "{{api_host}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                }
+              },
+              "response": [],
+              "_postman_id": "17a65dc9-dc25-40d5-affb-2421b4f39c24"
+            },
+            {
+              "name": "Get a Repair Category",
+              "id": "8de2cea0-0eb3-47af-a0dc-508f0e0ccc2c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{api_host}}/partner/repaircategories?where[id]=22",
+                "urlObject": {
+                  "path": [
+                    "partner",
+                    "repaircategories"
+                  ],
+                  "host": [
+                    "{{api_host}}"
+                  ],
+                  "query": [
+                    {
+                      "disabled": true,
+                      "key": "where[name]",
+                      "value": "Smartphones"
+                    },
+                    {
+                      "key": "where[id]",
+                      "value": "22"
+                    }
+                  ],
+                  "variable": []
+                }
+              },
+              "response": [],
+              "_postman_id": "8de2cea0-0eb3-47af-a0dc-508f0e0ccc2c"
+            }
+          ],
+          "id": "8039a600-b4cc-4ee8-b267-da188fb2751d",
+          "description": "<p>The Repair Categories endpoint will return one or all of the categories for which repairs can be created via this api. Repair Category ids are also used to retrieve the correct repair item templates.</p>\n<h3 id=\"repair-category-object\">Repair Category Object</h3>\n<p><strong>id</strong> | <em>number:</em> Unique numeric value assigned by database engine.</p>\n<p>parent_category_id | number: The id of the group to which a repair category belongs (i.e. <code>Electronics</code>)</p>\n<p>name | string: The name of the category(i.e. <code>Smartphone</code>)</p>\n<p>feature_order | number:</p>\n<p>repair_item_count | number: The count of repair items associated with a given category.</p>\n",
+          "_postman_id": "8039a600-b4cc-4ee8-b267-da188fb2751d"
+        }
+      ],
+      "id": "ea8731b2-793f-4b58-be87-59236661fcb8",
+      "description": "<h3 id=\"partner-api-namespace\">Partner API namespace</h3>\n<p>Each endpoint in the partner namespace is prefixed with `/partner` and contains the following endpoints:</p>\n<ul>\n<li>/partner/repairs</li>\n<li>/partner/repairitems</li>\n<li>/partner/repairnotes</li>\n<li>/partner/repaircategories</li>\n<li>/partner/repairassignments</li>\n<li>/partner/repairitemtemplates</li>\n</ul>\n<p>Repairs are managed with the `/partner/repairs` endpoint. They can be created and populated with details all-at-once or edited piece by piece.</p>\n<h3 id=\"typical-use-cases\">Typical Use Cases</h3>\n<h4 id=\"send-repair-request-in-1-payload\">Send repair request in 1 payload</h4>\n<p>To send the repair request in a single payload, send a <code>POST</code> request to <code>/partner/repairs</code> with a payload formatted like this example:</p>\n<pre class=\"click-to-expand-wrapper is-snippet-wrapper\"><code class=\"language-json\">{\n    \"requestedTiming\": \"ASAP\", \n    \"customer\": {\n        \"firstName\": \"Jane\",\n        \"lastName\": \"Doe\",\n        \"phoneNumber\": \"5554443333\",\n        \"email\": \"jane.doe@example.com\"\n    },\n    \"authorizedLimit\": 12500,\n    \"repairStatus\": \"SUBMITTED\",\n    \"category\": \"Smartphones\",\n    \"meta\": {\n        \"policyNumber\": \"byUs483js\",\n        \"model\": \"iPhone 12 mini\",\n        \"serial\": \"abc12345\",\n        \"imei\": \"123456789012345\",\n        \"color\": \"black\",\n        \"storage\": \"256gb\"\n    },\n    \"repairLocationDetails\": {\n        \"address\": \"1 Green Ave, 55105\",\n        \"radiusInMiles\": 50\n    },\n    \"items\": [\n        {\n            \"repairItemTemplateId\": 3\n        },\n        {\n            \"description\": \"Front Screen Replacement\"\n        },\n        {\n            \"description\": \"rear screen rebuffering\"\n        }\n    ]\n}\n\n</code></pre>\n<h4 id=\"creating-repair-request-piece-by-piece\">Creating repair request piece by piece</h4>\n<p>In this use case, we create an essentially empty repair and then update it with additional details and finally update the <code>repairStatus</code> to \"SUBMITTED\" to alert Upsie to begin routing the repair through the network.</p>\n<ol>\n<li>create the repair<ol>\n<li>send a <code>POST</code> to `/partner/repairs` with an empty object (`{ }`)in the request body</li>\n</ol>\n</li>\n<li>update the repair to add attribute data<ol>\n<li>send a <code>PUT</code> to <code>partner/repairs/{{repair.id|repair.identifier}}</code>with a body similar to this example</li>\n</ol>\n</li>\n</ol>\n<pre class=\"click-to-expand-wrapper is-snippet-wrapper\"><code class=\"language-json\">{    \n    \"requestedTiming\": \"ASAP\", \n    \"customer\": {\n        \"firstName\": \"Jane\",\n        \"lastName\": \"Doe\",\n        \"phoneNumber\": \"5554443333\",\n        \"email\": \"jane.doe@example.com\"\n    },\n    \"authorizedLimit\": 12500,\n    \"repairStatus\": \"SUBMITTED\",\n    \"category\": \"Smartphones\",\n    \"meta\": {\n        \"policyNumber\": \"byUs483js\",\n        \"model\": \"iPhone 12 mini\",\n        \"serial\": \"abc12345\",\n        \"imei\": \"123456789012345\",\n        \"color\": \"black\",\n        \"storage\": \"256gb\"\n    },\n    \"repairLocationDetails\": {\n        \"address\": \"1 Green Ave, 55105\",\n        \"radiusInMiles\": 50\n    }\n}\n\n</code></pre>\n<p>3. add repair item(s)</p>\n<p>a. send a <code>POST</code> to <code>/partner/repairitems</code> with a body similar to this example</p>\n<pre class=\"click-to-expand-wrapper is-snippet-wrapper\"><code class=\"language-json\">{\n  \"repairId\": 123,\n  \"repairItemTemplateId\": 3\n}\n\n</code></pre>\n<p>or</p>\n<pre class=\"click-to-expand-wrapper is-snippet-wrapper\"><code class=\"language-json\">{\n  \"repairId\": 123,\n  \"description\": \"Front Screen Replacement\"\n}\n\n</code></pre>\n<p>** the values for <code>repairItemTemplateId</code> and the <code>description</code> are found using the <code>/partner/repairitemtempalates</code> endpoint.</p>\n<p>** repairs can contain many repair items, repeat this process as nesessary to populate your repair.</p>\n<p>4. SUBMIT the repair by updating the repair status to \"SUBMITTED\"</p>\n<p>a. send a <code>PUT</code> to <code>partner/repairs/{{repair.id|repair.identifier}}</code>with a body similar to this example</p>\n<pre class=\"click-to-expand-wrapper is-snippet-wrapper\"><code class=\"language-json\">{\n  \"repairStatus\": \"SUBMITTED\"\n}\n\n</code></pre>\n<p>At this point the repair request has been submitted and will be processed by the platform. Core attributes of the repair are made readonly for the requestor at this stage. Repair notes can always be added at any time and can be used to request.</p>\n",
+      "_postman_id": "ea8731b2-793f-4b58-be87-59236661fcb8"
+    },
+    {
+      "name": "Authorization",
+      "item": [
+        {
+          "name": "Partner User Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "19862a68-0ac3-4a84-b911-e11e2b540916",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"token\", jsonData.token);",
+                  "postman.setEnvironmentVariable(\"user_token\", jsonData.token);",
+                  "postman.setEnvironmentVariable(\"user_refresh_token\", jsonData.refresh);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "id": "686955d0-f931-4646-9ecc-cec621b1a9d7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": {{username}},\n    \"password\": {{password}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{api_host}}/partner/auth/login",
+            "urlObject": {
+              "path": [
+                "partner",
+                "auth",
+                "login"
+              ],
+              "host": [
+                "{{api_host}}"
+              ],
+              "query": [],
+              "variable": []
+            }
+          },
+          "response": [],
+          "_postman_id": "686955d0-f931-4646-9ecc-cec621b1a9d7"
+        },
+        {
+          "name": "Generate Api Access Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d9ef90d2-447d-4a3d-9e50-f40b15683555",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"token\", jsonData.token);",
+                  "postman.setEnvironmentVariable(\"repairApiRefreshToken\", jsonData.refresh);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "id": "98886b82-7884-4199-bfe2-971f6c5b67cb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "{{token}}",
+                "type": "text"
+              }
+            ],
+            "url": "{{api_host}}/partner/auth/apiaccess",
+            "description": "<p>This endpoint will grant access to the tools available on the Upsie Partner Network API. In order to generate an API token you will need the token (in the request headers as <code>token</code>) from the initial login and an account that is properly associated with a repair source (your organization). This association is made at account creation or can be requested later for additional accounts.</p>\n",
+            "urlObject": {
+              "path": [
+                "partner",
+                "auth",
+                "apiaccess"
+              ],
+              "host": [
+                "{{api_host}}"
+              ],
+              "query": [],
+              "variable": []
+            }
+          },
+          "response": [],
+          "_postman_id": "98886b82-7884-4199-bfe2-971f6c5b67cb"
+        },
+        {
+          "name": "Generate Api Refresh Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "391228b8-615c-403b-8877-a5c6c332cecd",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"repairApiToken\", jsonData.token);",
+                  "postman.setEnvironmentVariable(\"repairApiRefreshToken\", jsonData.refresh);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "id": "9fca04e5-fc53-4452-aa6d-ea6ec6b80d7a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "{{repairApiRefreshToken}}",
+                "type": "text"
+              }
+            ],
+            "url": "{{api_host}}/partner/auth/apirefresh",
+            "description": "<p>This endpoint is used to generate a new pair of tokens (access and refresh) upon access token expiration. The Upsie Partner Network API will expect the most recent repair api refresh token in the headers as <code>token</code>.</p>\n",
+            "urlObject": {
+              "path": [
+                "partner",
+                "auth",
+                "apirefresh"
+              ],
+              "host": [
+                "{{api_host}}"
+              ],
+              "query": [],
+              "variable": []
+            }
+          },
+          "response": [],
+          "_postman_id": "9fca04e5-fc53-4452-aa6d-ea6ec6b80d7a"
+        },
+        {
+          "name": "Invalidate Partner Api Tokens",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d9ef90d2-447d-4a3d-9e50-f40b15683555",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"token\", jsonData.token);",
+                  "postman.setEnvironmentVariable(\"repairApiRefreshToken\", jsonData.refresh);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "id": "c26c2038-ddba-4096-b6c3-4aff982536f1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "{{user_token}}",
+                "type": "text"
+              }
+            ],
+            "url": "{{api_host}}/partner/auth/invalidateapitokens",
+            "description": "<p>This endpoint will grant access to the tools available on the Upsie Partner Network API. In order to generate an API token you will need the token (in the request headers as <code>token</code>) from the initial login and an account that is properly associated with a repair source (your organization). This association is made at account creation or can be requested later for additional accounts.</p>\n",
+            "urlObject": {
+              "path": [
+                "partner",
+                "auth",
+                "invalidateapitokens"
+              ],
+              "host": [
+                "{{api_host}}"
+              ],
+              "query": [],
+              "variable": []
+            }
+          },
+          "response": [],
+          "_postman_id": "c26c2038-ddba-4096-b6c3-4aff982536f1"
+        },
+        {
+          "name": "who am i",
+          "id": "59614de6-3f8c-492e-a609-5ac97d96ba64",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "{{token}}",
+                "type": "text"
+              }
+            ],
+            "url": "{{api_host}}/partner/auth/whoami",
+            "urlObject": {
+              "path": [
+                "partner",
+                "auth",
+                "whoami"
+              ],
+              "host": [
+                "{{api_host}}"
+              ],
+              "query": [],
+              "variable": []
+            }
+          },
+          "response": [],
+          "_postman_id": "59614de6-3f8c-492e-a609-5ac97d96ba64"
+        }
+      ],
+      "id": "93bf6362-463e-4a0c-84db-6ba38e9ff37b",
+      "description": "<p>The Upsie Partner Network API uses <a href=\"https://jwt.io/introduction\">JWT Tokens</a> Keys to authenticate requests. These API keys carry many privileges, so be sure to keep them secure. Do not share API keys in publicly accessible areas such as GitHub, client-side code, etc. Additionally, these tokens include an encoded expiration date which can be checked at any point. <strong>Access tokens have 30 day expiration</strong> time while <strong>refresh tokens have a 60 day expiration</strong> time.</p>\n<p>This portion of the documentation assumes access to the Upsie Partner Portal and the related permissions. Access to the initial token generation tool therein is not required but makes set up easier.</p>\n",
+      "_postman_id": "93bf6362-463e-4a0c-84db-6ba38e9ff37b"
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "get all webhooks",
+          "id": "f0072a53-1bb8-4744-8c3a-5f1c3033c3f1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "{{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "",
+                "type": "text"
+              }
+            ],
+            "url": "{{api_host}}/partner/partnerorganizationwebhooks/",
+            "description": "<p>Get all webhooks</p>\n",
+            "urlObject": {
+              "path": [
+                "partner",
+                "partnerorganizationwebhooks",
+                ""
+              ],
+              "host": [
+                "{{api_host}}"
+              ],
+              "query": [],
+              "variable": []
+            }
+          },
+          "response": [],
+          "_postman_id": "f0072a53-1bb8-4744-8c3a-5f1c3033c3f1"
+        },
+        {
+          "name": "get a webhook",
+          "id": "c842c6fa-66eb-45c6-98c9-1b6d4ba347c7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "{{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{api_host}}/partner/partnerorganizationwebhooks/:id",
+            "description": "<p>Get a singular webhook by id</p>\n",
+            "urlObject": {
+              "path": [
+                "partner",
+                "partnerorganizationwebhooks",
+                ":id"
+              ],
+              "host": [
+                "{{api_host}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "type": "any",
+                  "value": null,
+                  "key": "id"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "_postman_id": "c842c6fa-66eb-45c6-98c9-1b6d4ba347c7"
+        },
+        {
+          "name": "create webhook",
+          "id": "dd381980-25e3-4f46-aa09-7e138ef49352",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "{{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"url\": \"https://www.url.com/webhooks\",\n    \"meta\": {\n        \"events\": [\"repair_status_updated\"]\n    },\n    \"description\": \"descripition\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{api_host}}/partner/partnerorganizationwebhooks",
+            "description": "<p>Create a webhook.</p>\n<p><strong>url</strong> | <em>string</em>: The url that webhook data should be sent to.</p>\n<p><strong>meta</strong> | <em>jsonb</em>: The meta object is a flexible object that can accept any data you would like to attach to the webhook. Some feilds are required.</p>\n<div class=\"click-to-expand-wrapper is-table-wrapper\"><table>\n<thead>\n<tr>\n<th><strong>Attribute</strong></th>\n<th><strong>Type</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>events (required)</td>\n<td>string [] - an array of the events that the given webhook is subscribed to.</td>\n</tr>\n</tbody>\n</table>\n</div><p><strong>isActive</strong> | <em>boolean</em>: A flag to activate or deactivate a webhook.</p>\n<p><strong>description</strong> | <em>string</em> (optional): A short explantion of the webhook.</p>\n<h2 id=\"events\">Events</h2>\n<div class=\"click-to-expand-wrapper is-table-wrapper\"><table>\n<thead>\n<tr>\n<th><strong>Name</strong></th>\n<th><strong>Description</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>repair.updated.repairStatus</td>\n<td>This event fires when the status of a repair is updated. The statuses include DRAFT, SUBMITTED, ASSIGNED, READY_TO_START, IN_PROGRESS, PENDING_REVIEW, BER, UNFIXABLE, COMPLETE, CLOSED, CANCELLED, ESCALATED. See the repair section of these docs for an explantion of each status.</td>\n</tr>\n</tbody>\n</table>\n</div>",
+            "urlObject": {
+              "path": [
+                "partner",
+                "partnerorganizationwebhooks"
+              ],
+              "host": [
+                "{{api_host}}"
+              ],
+              "query": [],
+              "variable": []
+            }
+          },
+          "response": [],
+          "_postman_id": "dd381980-25e3-4f46-aa09-7e138ef49352"
+        },
+        {
+          "name": "update webhook",
+          "id": "b5bbdc20-e7e6-4562-af55-173b31a5e6a8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "token",
+                "value": "{{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"url\": \"www.url.com/testwebhooks\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{api_host}}/partner/partnerorganizationwebhooks/:id",
+            "description": "<p>This endpoint will return the updated webhook. The properties that may be updated are explained in detail in the <code>POST</code> create a webhook documentation above. Those properties are: url, isActive, meta and description.</p>\n",
+            "urlObject": {
+              "path": [
+                "partner",
+                "partnerorganizationwebhooks",
+                ":id"
+              ],
+              "host": [
+                "{{api_host}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "type": "any",
+                  "value": null,
+                  "key": "id"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "_postman_id": "b5bbdc20-e7e6-4562-af55-173b31a5e6a8"
+        },
+        {
+          "name": "delete a webhook",
+          "id": "f382d1fd-a47f-42b1-acac-1d0ae7e581b3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "token",
+                "value": "{{token}}",
+                "type": "text"
+              }
+            ],
+            "url": "{{api_host}}/partner/partnerorganizationwebhooks/:id",
+            "description": "<p>The webhooks <code>DELETE</code> endpoint will remove a webhook record from the database. It is a hard delete, no record of url, meta, etc will remain after making this request.</p>\n",
+            "urlObject": {
+              "path": [
+                "partner",
+                "partnerorganizationwebhooks",
+                ":id"
+              ],
+              "host": [
+                "{{api_host}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "type": "any",
+                  "value": null,
+                  "key": "id"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "_postman_id": "f382d1fd-a47f-42b1-acac-1d0ae7e581b3"
+        }
+      ],
+      "id": "d3f59435-ec05-4267-a7e8-48d0a84616be",
+      "description": "<p>Listen for events and forward them to your application. These endpoints are used in conjunction with <code>Generate Api Access Token</code> mentioned in the authorization section to monitor events.</p>\n",
+      "_postman_id": "d3f59435-ec05-4267-a7e8-48d0a84616be"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  Derived from openapi/upsie-partner-network-openapi.yml and the official
+  Postman documentation (https://documenter.getpostman.com/view/16328390/2s8ZDeUykK).
+description: >-
+  Industry / cross-cutting standards posture of the Upsie Partner Network API.
+  No formal compliance program (SOC 2 / ISO 27001 / PCI) is published on the
+  public surface probed on 2026-07-21.
+standards:
+  - id: rest
+    conforms: true
+    evidence: >-
+      Docs state the API "adheres to industry-standard RESTful principles";
+      resource-oriented paths with GET/POST/PUT/DELETE.
+  - id: jwt
+    conforms: true
+    evidence: >-
+      Docs: "we use JSON Web Tokens (JWT) in our API"; JWT passed in a `token`
+      header, with documented access/refresh token lifetimes.
+  - id: oauth2
+    conforms: false
+    evidence: No OAuth 2.0 flows; custom login + token-exchange endpoints under /partner/auth.
+  - id: oidc
+    conforms: false
+    evidence: /.well-known/openid-configuration returns 404 on upsie.com and api.upsie.com.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: No application/problem+json responses in the documented examples.
+  - id: json:api
+    conforms: false
+    evidence: Plain JSON objects; no JSON:API envelope.
+  - id: webhooks
+    conforms: true
+    evidence: >-
+      Webhook subscription management documented at
+      /partner/partnerorganizationwebhooks with event names (repair_status_updated).
+  - id: pagination
+    conforms: false
+    evidence: No pagination contract documented on list endpoints.
+  - id: idempotency
+    conforms: false
+    evidence: No idempotency-key mechanism documented.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returns 404 on upsie.com and api.upsie.com.

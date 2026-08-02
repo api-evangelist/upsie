@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: searched
+source: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+description: >-
+  Upsie's documented sandbox surface for the Partner Network API. The official
+  Postman documentation states "a sandbox environment is accessible at
+  https://stage-api.upsie.com" alongside the production host api.upsie.com.
+  No magic test values, test credentials, or fixture tooling are published;
+  sandbox access is provisioned with partner credentials via the Upsie Partner
+  Portal (contact dev@upsie.com).
+environments:
+  - name: production
+    base_url: https://api.upsie.com
+  - name: stage (sandbox)
+    base_url: https://stage-api.upsie.com
+    notes: >-
+      Documented sandbox environment. At probe time (2026-07-21) the host
+      answered HTTP 530 (Cloudflare origin error) to an unauthenticated
+      request to /, suggesting access may be gated or the stage origin was
+      down at that moment.
+test_values: []
+notes: >-
+  No published test cards, tokens, or magic identifiers. Partner onboarding and
+  token generation happen through the Upsie Partner Portal.

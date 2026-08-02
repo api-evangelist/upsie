@@ -1,0 +1,66 @@
+generated: '2026-07-21'
+method: searched
+source: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+description: >-
+  Cross-cutting request/response conventions of the Upsie Partner Network API,
+  captured from the official Postman documentation and the documented request
+  examples. JWT auth in a custom `token` header, `where[...]` query filtering,
+  and `includes=` relation expansion are the load-bearing conventions; no
+  idempotency-key, pagination, or versioning contract is published.
+base_url: https://api.upsie.com
+api_style: REST over HTTPS, JSON requests and responses
+
+authentication:
+  scheme: JWT in a custom `token` request header
+  detail: authentication/upsie-authentication.yml
+
+idempotency:
+  supported: false
+  notes: No idempotency-key mechanism is documented.
+
+pagination:
+  documented: false
+  notes: >-
+    List endpoints (e.g. GET /partner/repairs) are documented without
+    pagination parameters; no cursor/offset contract is published.
+
+filtering:
+  style: where[field]=value query parameters
+  examples:
+    - GET /partner/repairitems?where[repair_id]=22
+    - GET /partner/repairitemtemplates?where[category_id]=4
+    - GET /partner/repaircategories?where[id]=22
+  nested_fields: >-
+    Nested/dotted columns are escaped with `__dot__`, e.g.
+    GET /partner/repairnotes?where[repairnotes__dot__repair_id]=13
+field_expansion:
+  style: includes=<relation> query parameter
+  examples:
+    - POST /partner/repairs?includes=customer (returns the repair with the customer relation populated)
+
+resource_lookup:
+  notes: Repairs are addressable by numeric `id` or by string `identifier` (e.g. U0017).
+
+versioning:
+  documented: false
+  notes: No version prefix in paths and no versioning policy published.
+
+error_envelope:
+  documented: false
+  notes: The public collection publishes 200-level examples only; no error-catalog or problem-details format is documented.
+
+rate_limits:
+  documented: false
+
+webhooks:
+  detail: asyncapi/upsie-webhooks.yml
+  notes: Webhook subscriptions are managed via /partner/partnerorganizationwebhooks.
+
+state_machine:
+  repairStatus:
+    notes: >-
+      Repairs are created as DRAFT and submitted by updating repairStatus to
+      SUBMITTED, after which core attributes become read-only for the
+      requestor. Observed values in documentation: DRAFT, SUBMITTED.
+  assignmentStatus:
+    notes: "Observed value in documented examples: PENDING."

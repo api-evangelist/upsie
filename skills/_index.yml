@@ -1,0 +1,16 @@
+generated: '2026-07-21'
+method: generated
+source: >-
+  Packaged Agent Skills generated from openapi/upsie-partner-network-openapi.yml
+  (derived from the official Postman collection). Every step is grounded in an
+  operationId present verbatim in the spec; cross-cutting rules cite
+  ../conventions/, ../authentication/, and ../asyncapi/.
+skills:
+  - file: upsie-create-and-submit-repair.md
+    name: Create and submit a repair
+    api: openapi/upsie-partner-network-openapi.yml
+    operations: [partnerLogin, generateApiAccessToken, listRepairCategories, listRepairItemTemplates, createRepair, createRepairItem, updateRepair, getRepair]
+  - file: upsie-webhook-monitoring.md
+    name: Monitor repair events with webhooks
+    api: openapi/upsie-partner-network-openapi.yml
+    operations: [generateApiAccessToken, whoAmI, createWebhook, listWebhooks, updateWebhook, deleteWebhook, listRepairNotes, createRepairNote]

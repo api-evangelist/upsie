@@ -1,0 +1,606 @@
+openapi: 3.0.3
+info:
+  title: Upsie Partner Network API
+  version: 1.0.0
+  description: 'Welcome to the Upsie Partner API! We are excited to offer our partners a secure and reliable
+    way to access our repair network. Our API is designed to provide a simple and standardized interface
+    for accessing the repair network while maintaining the highest level of security. It allows partner
+    network members to easily request repairs, access details about all their repairs, and obtain other
+    repair-related information. To ensure that all requests are authenticated and authorized, we use JSON
+    Web Tokens (JWT) in our API. This feature ensures that only authorized users can access our network,
+    and all requests remain secure and protected from malicious attacks. Additionally, our API adheres
+    to industry-standard RESTful principles, making it easy to integrate with a wide range of platforms
+    and applications. We are committed to providing our partners and customers with the best possible
+    experience when using our API, and we welcome feedback and suggestions for improvement via email to
+    dev@upsie.com . Accessing the API The production api is accessed at https://api.upsie.com and a sandbox
+    environment is accessible at https://stage-api.upsie.com base production url: api.upsie.com base stage
+    url: stage-api.upsie.com Authentication The Upsie Partner Network API uses JWT Tokens to authenticate
+    requests. The token should be passed in a token header with each api request. Suggestions for safe
+    use of JWT Tokens Protect your token: These API keys carry many privileges, so be sure to keep them
+    secure. Do not share API keys in publicly accessible areas such as GitHub, client-side code, etc.
+    Do not share your token with others and always keep it safe. Use HTTPS: Always use a secure connection
+    when making API requests to prevent attackers from intercepting or tampering with the JWT token. Invalidate
+    token when necessary: Always invalidate your accounts JWT token if you suspect one has been lost or
+    stolen. Partner scoped API access tokens have 10 year expiration time. API tokens can be generated
+    and invalidated via the partner portal. Contact us if you need access to the partner portal or to
+    be allowed API access.'
+  contact:
+    email: dev@upsie.com
+externalDocs:
+  description: Official Postman documentation (api.upsie.com/docs redirects here)
+  url: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
+servers:
+- url: https://api.upsie.com
+  description: Production
+- url: https://stage-api.upsie.com
+  description: Sandbox / stage
+tags:
+- name: Authorization
+- name: Repair Assignments (/repairassignments)
+- name: Repair Categories
+- name: Repair Item Templates
+- name: Repair Items (/repairitems)
+- name: Repair Notes
+- name: Repairs (/repairs)
+- name: Webhooks
+paths:
+  /partner/repairs:
+    post:
+      operationId: createRepair
+      summary: Create a Repair (all-in-one example)
+      tags:
+      - Repairs (/repairs)
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Create-a-Repair--all-in-one-example-:
+                summary: Create a Repair (all-in-one example)
+                value:
+                  requestedTiming: ASAP
+                  customer:
+                    firstName: Jane
+                    lastName: Doe
+                    phoneNumber: '5554443333'
+                    email: jane.doe@example.com
+                  authorizedLimit: 12500
+                  category: Smartphones
+                  meta:
+                    policyNumber: byUs483js
+                    model: iPhone 12 mini
+                    serial: abc12345
+                    imei: '123456789012345'
+                    color: black
+                    storage: 256gb
+                  repairLocationDetails:
+                    address: 1 Green Ave, 55105
+                    radiusInMiles: 50
+                  items:
+                  - repairItemTemplateId: 3
+                  - description: Front Screen Replacement
+                  - description: rear screen rebuffering
+              Create-a-Repair--smartphone-example-:
+                summary: Create a Repair (smartphone example)
+                value:
+                  requestedTiming: ASAP
+                  customer:
+                    firstName: Jane
+                    lastName: Doe
+                    phoneNumber: '5554443333'
+                    email: jane.doe@example.com
+                  authorizedLimit: 12500
+                  category: Smartphones
+                  meta:
+                    policyNumber: rwJLHdNo
+                    model: iPhone 12 mini
+                    serial: abc12345
+                    imei: '123456789012345'
+                    color: black
+                    storage: 256gb
+                  repairLocationDetails:
+                    address: 3 yellow Ave, 55105
+                    radiusInMiles: 50
+              Create-a-Repair--minimal-example-:
+                summary: Create a Repair (minimal example)
+                value:
+                  comments: it broke
+                  repairStatus: DRAFT
+                  requestedTimingId: 1
+                  requesterId: 1
+                  customerId: 67518
+                  warrantyId: 71010
+                  categoryId: 1
+                  meta:
+                    policyNumber: byUs483js
+                    serial: abc12345
+                    imei: '123456789012345'
+                    color: black
+                    storage: 256gb
+                  repairLocationDetails:
+                    postalCode: '55105'
+                    address: 1 Green Ave
+                    radiusInMiles: 50
+      responses:
+        '200':
+          description: Create a Repair (all-in-one example)
+          content:
+            application/json:
+              examples:
+                Create-a-Repair--all-in-one-example-:
+                  summary: Create a Repair (all-in-one example)
+                  value:
+                    id: 24
+                    identifier: U0017
+                    requestedAt: '2023-04-18T17:36:18.083Z'
+                    repairStatus: DRAFT
+                    assignmentStatus: PENDING
+                    paymentStatus: null
+                    repairLocationDetails:
+                      address: 1 Green Ave, 55105
+                      radiusInMiles: 50
+                    comments: null
+                    meta:
+                      policyNumber: byUs483js
+                      model: iPhone 12 mini
+                      serial: abc12345
+                      imei: '123456789012345'
+                      color: black
+                      storage: 256gb
+                    categoryId: 4
+                    repairSourceId: 1
+                    authorizedLimit: 12500
+                    customerId: 87141
+                    allowEditingCustomer: false
+                    requestedTimingId: 1
+                    smartphoneId: 276
+                    activeAssignmentId: null
+                    warrantyId: null
+                    createdAt: '2023-04-18T17:36:18.083Z'
+                    modifiedAt: '2023-04-18T17:36:18.083Z'
+                    wasCancelled: null
+                    estCompleteDate: null
+                    intakeData: null
+                    completedAt: null
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Create a Repair (all-in-one example)
+      - Create a Repair (smartphone example)
+      - Create a Repair (minimal example)
+    put:
+      operationId: createRepairPut
+      summary: Create a Repair (non-phone example)
+      tags:
+      - Repairs (/repairs)
+      description: Many of the attributes in the repair object are nullable or assigned at creation or
+        update. Below is a sample request body that satisfies the necessary requirements for repair creation.
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Create-a-Repair--non-phone-example-:
+                summary: Create a Repair (non-phone example)
+                value:
+                  requestedTiming: ASAP
+                  customer:
+                    firstName: Jane
+                    lastName: Doe
+                    phoneNumber: '5554443333'
+                    email: jane.doe@example.com
+                  authorizedLimit: 12500
+                  category: Tablets
+                  meta:
+                    model: iPad Air
+                    serial: xyz98765
+                    color: black
+                    storage: 512gb
+                  repairLocationDetails:
+                    address: 370 Wabasha St N, 55102
+                    radiusInMiles: 50
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Create a Repair (non-phone example)
+    get:
+      operationId: listRepairs
+      summary: Get All Repairs
+      tags:
+      - Repairs (/repairs)
+      description: This endpoint returns all repairs regardless of any given status or attriibute. Filtering
+        can be done client side or via query params. Documentation of the query param syntax used by the
+        Upsie Repair Network API can be found below. Examples are included in the request Params tab.
+        Please note that these params serve as examples only. They will not return any results unless
+        matching data has been created for this organization. In order to test the included query params,
+        create data such that the query is satisfied.
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Get All Repairs
+  /partner/repairs/{id}:
+    get:
+      operationId: getRepair
+      summary: Get One Repair
+      tags:
+      - Repairs (/repairs)
+      description: This endpoint will return a singular repair object. Include the repair identifier that
+        was returned on repair creation as a query param (as seen in the example request) or simply append
+        to the url (i.e. partner/repairs/
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Repair id or identifier
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Get One Repair
+    put:
+      operationId: updateRepair
+      summary: Update Repair
+      tags:
+      - Repairs (/repairs)
+      description: This endpoint will return a singular repair object. Include the repair identifier that
+        was returned on repair creation as a query param (as seen in the example request) or simply append
+        to the url (i.e. partner/repairs/
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Repair id or identifier
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Update-Repair:
+                summary: Update Repair
+                value:
+                  repairStatus: SUBMITTED
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Update Repair
+  /partner/repairitems:
+    get:
+      operationId: listRepairItems
+      summary: Get All Repair Items
+      tags:
+      - Repair Items (/repairitems)
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Get All Repair Items
+    post:
+      operationId: createRepairItem
+      summary: Create A Repair Item
+      tags:
+      - Repair Items (/repairitems)
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Create-A-Repair-Item:
+                summary: Create A Repair Item
+                value:
+                  repairId: 5
+                  repairItemTemplateId: 4
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Create A Repair Item
+  /partner/repairassignments:
+    get:
+      operationId: listRepairAssignments
+      summary: Get All Repair Assignments
+      tags:
+      - Repair Assignments (/repairassignments)
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Get All Repair Assignments
+      - Get a Repair Assignment
+  /partner/repairitemtemplates:
+    get:
+      operationId: listRepairItemTemplates
+      summary: Get All Repair Item Templates
+      tags:
+      - Repair Item Templates
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Get All Repair Item Templates
+      - Get a Repair Item Template
+  /partner/repairnotes:
+    get:
+      operationId: listRepairNotes
+      summary: Get All Repair Notes
+      tags:
+      - Repair Notes
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Get All Repair Notes
+    post:
+      operationId: createRepairNote
+      summary: Create Repair Note
+      tags:
+      - Repair Notes
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Create-Repair-Note:
+                summary: Create Repair Note
+                value:
+                  repairId: 14
+                  message: last one
+                  alertCustomer: false
+                  alertRepairPartner: false
+                  alertRepairSource: false
+                  alertInteral: false
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Create Repair Note
+  /partner/repaircategories:
+    get:
+      operationId: listRepairCategories
+      summary: Get All Repair Categories
+      tags:
+      - Repair Categories
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Get All Repair Categories
+      - Get a Repair Category
+  /partner/auth/login:
+    post:
+      operationId: partnerLogin
+      summary: Partner User Login
+      tags:
+      - Authorization
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Partner-User-Login:
+                summary: Partner User Login
+                value: "{\n    \"username\": {{username}},\n    \"password\": {{password}}\n}"
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      x-postman-request-names:
+      - Partner User Login
+  /partner/auth/apiaccess:
+    post:
+      operationId: generateApiAccessToken
+      summary: Generate Api Access Token
+      tags:
+      - Authorization
+      description: This endpoint will grant access to the tools available on the Upsie Partner Network
+        API. In order to generate an API token you will need the token (in the request headers as token
+        ) from the initial login and an account that is properly associated with a repair source (your
+        organization). This association is made at account creation or can be requested later for additional
+        accounts.
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Generate Api Access Token
+  /partner/auth/apirefresh:
+    post:
+      operationId: generateApiRefreshToken
+      summary: Generate Api Refresh Token
+      tags:
+      - Authorization
+      description: This endpoint is used to generate a new pair of tokens (access and refresh) upon access
+        token expiration. The Upsie Partner Network API will expect the most recent repair api refresh
+        token in the headers as token .
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Generate Api Refresh Token
+  /partner/auth/invalidateapitokens:
+    post:
+      operationId: invalidateApiTokens
+      summary: Invalidate Partner Api Tokens
+      tags:
+      - Authorization
+      description: This endpoint will grant access to the tools available on the Upsie Partner Network
+        API. In order to generate an API token you will need the token (in the request headers as token
+        ) from the initial login and an account that is properly associated with a repair source (your
+        organization). This association is made at account creation or can be requested later for additional
+        accounts.
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - Invalidate Partner Api Tokens
+  /partner/auth/whoami:
+    get:
+      operationId: whoAmI
+      summary: who am i
+      tags:
+      - Authorization
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - who am i
+  /partner/partnerorganizationwebhooks:
+    get:
+      operationId: listWebhooks
+      summary: get all webhooks
+      tags:
+      - Webhooks
+      description: Get all webhooks
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - get all webhooks
+    post:
+      operationId: createWebhook
+      summary: create webhook
+      tags:
+      - Webhooks
+      description: 'Create a webhook. url | string : The url that webhook data should be sent to. meta
+        | jsonb : The meta object is a flexible object that can accept any data you would like to attach
+        to the webhook. Some feilds are required. Attribute Type events (required) string [] - an array
+        of the events that the given webhook is subscribed to. isActive | boolean : A flag to activate
+        or deactivate a webhook. description | string (optional): A short explantion of the webhook. Events
+        Name Description repair.updated.repairStatus This event fires when the status of a repair is updated.
+        The statuses include DRAFT, SUBMITTED, ASSIGNED, READY_TO_START, IN_PROGRESS, PENDING_REVIEW,
+        BER, UNFIXABLE, COMPLETE, CLOSED, CANCELLED, ESCALATED. See the repair section of these docs for
+        an explantion of each status.'
+      requestBody:
+        content:
+          application/json:
+            examples:
+              create-webhook:
+                summary: create webhook
+                value:
+                  url: https://www.url.com/webhooks
+                  meta:
+                    events:
+                    - repair_status_updated
+                  description: descripition
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - create webhook
+  /partner/partnerorganizationwebhooks/{id}:
+    get:
+      operationId: getWebhook
+      summary: get a webhook
+      tags:
+      - Webhooks
+      description: Get a singular webhook by id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Resource id
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - get a webhook
+    put:
+      operationId: updateWebhook
+      summary: update webhook
+      tags:
+      - Webhooks
+      description: 'This endpoint will return the updated webhook. The properties that may be updated
+        are explained in detail in the POST create a webhook documentation above. Those properties are:
+        url, isActive, meta and description.'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Resource id
+      requestBody:
+        content:
+          application/json:
+            examples:
+              update-webhook:
+                summary: update webhook
+                value:
+                  url: www.url.com/testwebhooks
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - update webhook
+    delete:
+      operationId: deleteWebhook
+      summary: delete a webhook
+      tags:
+      - Webhooks
+      description: The webhooks DELETE endpoint will remove a webhook record from the database. It is
+        a hard delete, no record of url, meta, etc will remain after making this request.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Resource id
+      responses:
+        '200':
+          description: Successful response (no example published in the collection)
+      security:
+      - jwtToken: []
+      x-postman-request-names:
+      - delete a webhook
+components:
+  securitySchemes:
+    jwtToken:
+      type: apiKey
+      in: header
+      name: token
+      description: JWT passed in a `token` header with each request. Access tokens expire after 30 days,
+        refresh tokens after 60 days; partner-scoped API access tokens have a 10 year expiration and are
+        generated / invalidated via the Upsie Partner Portal.
+x-generated: '2026-07-21'
+x-method: derived
+x-source: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK (Upsie Partner Network API Postman
+  collection, fetched 2026-07-21)
