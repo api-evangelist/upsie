@@ -146,6 +146,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/upsie-partner-network-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/upsie-agentic-access.yml
 - type: DomainSecurity
