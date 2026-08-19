@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Upsie Partner Network Authorization Repair Items (/repairitems) API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Repair Items (/repairitems)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Repair Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.upsie.com/partner/repairitems",
+            "auth": {
+              "type": "apikey",
+              "key": "token",
+              "value": "{{token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get All Repair Items"
+        },
+        {
+          "info": {
+            "name": "Create A Repair Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.upsie.com/partner/repairitems",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "token",
+              "value": "{{token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create A Repair Item"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

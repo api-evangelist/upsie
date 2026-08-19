@@ -1,0 +1,115 @@
+{
+  "item": [
+    {
+      "id": "856effc0-5cd7-4dce-9a0b-9e5460df48a6",
+      "name": "Repair Assignments (/repairassignments)",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "34bf4f30-4698-47a0-bd72-b6f0344ec5b8",
+          "name": "Get All Repair Assignments",
+          "request": {
+            "name": "Get All Repair Assignments",
+            "description": {},
+            "url": {
+              "path": [
+                "partner",
+                "repairassignments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1c27d7a6-356e-4a13-8799-b14054792573",
+              "name": "Successful response (no example published in the collection)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "repairassignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.upsie.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9b22dc8a-4b64-42f9-9761-5ec91d8bdc61",
+    "name": "Upsie Partner Network Authorization Repair Assignments (/repairassignments) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Upsie Partner API! We are excited to offer our partners a secure and reliable way to access our repair network. Our API is designed to provide a simple and standardized interface for accessing the repair network while maintaining the highest level of security. It allows partner network members to easily request repairs, access details about all their repairs, and obtain other repair-related information. To ensure that all requests are authenticated and authorized, we use JSON Web Tokens (JWT) in our API. This feature ensures that only authorized users can access our network, and all requests remain secure and protected from malicious attacks. Additionally, our API adheres to industry-standard RESTful principles, making it easy to integrate with a wide range of platforms and applications. We are committed to providing our partners and customers with the best possible experience when using our API, and we welcome feedback and suggestions for improvement via email to dev@upsie.com . Accessing the API The production api is accessed at https://api.upsie.com and a sandbox environment is accessible at https://stage-api.upsie.com base production url: api.upsie.com base stage url: stage-api.upsie.com Authentication The Upsie Partner Network API uses JWT Tokens to authenticate requests. The token should be passed in a token header with each api request. Suggestions for safe use of JWT Tokens Protect your token: These API keys carry many privileges, so be sure to keep them secure. Do not share API keys in publicly accessible areas such as GitHub, client-side code, etc. Do not share your token with others and always keep it safe. Use HTTPS: Always use a secure connection when making API requests to prevent attackers from intercepting or tampering with the JWT token. Invalidate token when necessary: Always invalidate your accounts JWT token if you suspect one has been lost or stolen. Partner scoped API access tokens have 10 year expiration time. API tokens can be generated and invalidated via the partner portal. Contact us if you need access to the partner portal or to be allowed API access.\n\nContact Support:\n Email: dev@upsie.com",
+      "type": "text/plain"
+    }
+  }
+}

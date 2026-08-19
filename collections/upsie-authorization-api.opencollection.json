@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Upsie Partner Network Authorization API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authorization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Partner User Login",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.upsie.com/partner/auth/login",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partner User Login"
+        },
+        {
+          "info": {
+            "name": "Generate Api Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.upsie.com/partner/auth/apiaccess",
+            "auth": {
+              "type": "apikey",
+              "key": "token",
+              "value": "{{token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This endpoint will grant access to the tools available on the Upsie Partner Network API. In order to generate an API token you will need the token (in the request headers as token ) from the initial login and an account that is properly associated with a repair source (your organization). This association is made at account creation or can be requested later for additional accounts."
+        },
+        {
+          "info": {
+            "name": "Generate Api Refresh Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.upsie.com/partner/auth/apirefresh",
+            "auth": {
+              "type": "apikey",
+              "key": "token",
+              "value": "{{token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This endpoint is used to generate a new pair of tokens (access and refresh) upon access token expiration. The Upsie Partner Network API will expect the most recent repair api refresh token in the headers as token ."
+        },
+        {
+          "info": {
+            "name": "Invalidate Partner Api Tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.upsie.com/partner/auth/invalidateapitokens",
+            "auth": {
+              "type": "apikey",
+              "key": "token",
+              "value": "{{token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This endpoint will grant access to the tools available on the Upsie Partner Network API. In order to generate an API token you will need the token (in the request headers as token ) from the initial login and an account that is properly associated with a repair source (your organization). This association is made at account creation or can be requested later for additional accounts."
+        },
+        {
+          "info": {
+            "name": "who am i",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.upsie.com/partner/auth/whoami",
+            "auth": {
+              "type": "apikey",
+              "key": "token",
+              "value": "{{token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "who am i"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,135 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Upsie Partner Network Authorization Webhooks API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get all webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.upsie.com/partner/partnerorganizationwebhooks",
+            "auth": {
+              "type": "apikey",
+              "key": "token",
+              "value": "{{token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all webhooks"
+        },
+        {
+          "info": {
+            "name": "create webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.upsie.com/partner/partnerorganizationwebhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "token",
+              "value": "{{token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a webhook. url | string : The url that webhook data should be sent to. meta | jsonb : The meta object is a flexible object that can accept any data you would like to attach to the webhook. Some feilds are required. Attribute Type events (required) string [] - an array of the events that the given webhook is subscribed to. isActive | boolean : A flag to activate or deactivate a webhook. description | string (optional): A short explantion of the webhook. Events Name Description repair.updat"
+        },
+        {
+          "info": {
+            "name": "get a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.upsie.com/partner/partnerorganizationwebhooks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "token",
+              "value": "{{token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a singular webhook by id"
+        },
+        {
+          "info": {
+            "name": "update webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.upsie.com/partner/partnerorganizationwebhooks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "token",
+              "value": "{{token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This endpoint will return the updated webhook. The properties that may be updated are explained in detail in the POST create a webhook documentation above. Those properties are: url, isActive, meta and description."
+        },
+        {
+          "info": {
+            "name": "delete a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.upsie.com/partner/partnerorganizationwebhooks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "token",
+              "value": "{{token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "The webhooks DELETE endpoint will remove a webhook record from the database. It is a hard delete, no record of url, meta, etc will remain after making this request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

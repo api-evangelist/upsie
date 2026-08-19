@@ -1,0 +1,562 @@
+{
+  "item": [
+    {
+      "id": "8e91dc53-0a8a-4198-9bf2-123e6096cfc2",
+      "name": "Webhooks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fe61d260-7768-4915-bbe2-68b021825743",
+          "name": "get all webhooks",
+          "request": {
+            "name": "get all webhooks",
+            "description": {
+              "content": "Get all webhooks",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "partner",
+                "partnerorganizationwebhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7642dc92-3653-4cc5-a53e-a2883444b5a0",
+              "name": "Successful response (no example published in the collection)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "partnerorganizationwebhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a23801d9-4e7e-4d36-bf4a-5cf7e18d42da",
+          "name": "create webhook",
+          "request": {
+            "name": "create webhook",
+            "description": {
+              "content": "Create a webhook. url | string : The url that webhook data should be sent to. meta | jsonb : The meta object is a flexible object that can accept any data you would like to attach to the webhook. Some feilds are required. Attribute Type events (required) string [] - an array of the events that the given webhook is subscribed to. isActive | boolean : A flag to activate or deactivate a webhook. description | string (optional): A short explantion of the webhook. Events Name Description repair.updated.repairStatus This event fires when the status of a repair is updated. The statuses include DRAFT, SUBMITTED, ASSIGNED, READY_TO_START, IN_PROGRESS, PENDING_REVIEW, BER, UNFIXABLE, COMPLETE, CLOSED, CANCELLED, ESCALATED. See the repair section of these docs for an explantion of each status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "partner",
+                "partnerorganizationwebhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://www.url.com/webhooks\",\n  \"meta\": {\n    \"events\": [\n      \"repair_status_updated\"\n    ]\n  },\n  \"description\": \"descripition\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5f7b8b6d-f968-4d3d-a938-812236cf8dc6",
+              "name": "Successful response (no example published in the collection)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "partnerorganizationwebhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://www.url.com/webhooks\",\n  \"meta\": {\n    \"events\": [\n      \"repair_status_updated\"\n    ]\n  },\n  \"description\": \"descripition\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9486a4c-a4b5-4bc7-a864-d3a6aee3c218",
+          "name": "get a webhook",
+          "request": {
+            "name": "get a webhook",
+            "description": {
+              "content": "Get a singular webhook by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "partner",
+                "partnerorganizationwebhooks",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource id"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1de7588f-0bc6-4094-82ce-1d674aa107dd",
+              "name": "Successful response (no example published in the collection)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "partnerorganizationwebhooks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bfe8f72f-fde6-4760-940e-718ff2e28ce4",
+          "name": "update webhook",
+          "request": {
+            "name": "update webhook",
+            "description": {
+              "content": "This endpoint will return the updated webhook. The properties that may be updated are explained in detail in the POST create a webhook documentation above. Those properties are: url, isActive, meta and description.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "partner",
+                "partnerorganizationwebhooks",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"www.url.com/testwebhooks\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e6958a28-7edf-45a4-bca6-1622443c8259",
+              "name": "Successful response (no example published in the collection)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "partnerorganizationwebhooks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"www.url.com/testwebhooks\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02051d46-59ba-4b90-9d69-a480405ea4d6",
+          "name": "delete a webhook",
+          "request": {
+            "name": "delete a webhook",
+            "description": {
+              "content": "The webhooks DELETE endpoint will remove a webhook record from the database. It is a hard delete, no record of url, meta, etc will remain after making this request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "partner",
+                "partnerorganizationwebhooks",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource id"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4e2f2432-d323-4331-ba3b-58ce77a0721f",
+              "name": "Successful response (no example published in the collection)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "partnerorganizationwebhooks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.upsie.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a4fa9a5c-1f2c-4c72-875d-0e6783d70aec",
+    "name": "Upsie Partner Network Authorization Webhooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Upsie Partner API! We are excited to offer our partners a secure and reliable way to access our repair network. Our API is designed to provide a simple and standardized interface for accessing the repair network while maintaining the highest level of security. It allows partner network members to easily request repairs, access details about all their repairs, and obtain other repair-related information. To ensure that all requests are authenticated and authorized, we use JSON Web Tokens (JWT) in our API. This feature ensures that only authorized users can access our network, and all requests remain secure and protected from malicious attacks. Additionally, our API adheres to industry-standard RESTful principles, making it easy to integrate with a wide range of platforms and applications. We are committed to providing our partners and customers with the best possible experience when using our API, and we welcome feedback and suggestions for improvement via email to dev@upsie.com . Accessing the API The production api is accessed at https://api.upsie.com and a sandbox environment is accessible at https://stage-api.upsie.com base production url: api.upsie.com base stage url: stage-api.upsie.com Authentication The Upsie Partner Network API uses JWT Tokens to authenticate requests. The token should be passed in a token header with each api request. Suggestions for safe use of JWT Tokens Protect your token: These API keys carry many privileges, so be sure to keep them secure. Do not share API keys in publicly accessible areas such as GitHub, client-side code, etc. Do not share your token with others and always keep it safe. Use HTTPS: Always use a secure connection when making API requests to prevent attackers from intercepting or tampering with the JWT token. Invalidate token when necessary: Always invalidate your accounts JWT token if you suspect one has been lost or stolen. Partner scoped API access tokens have 10 year expiration time. API tokens can be generated and invalidated via the partner portal. Contact us if you need access to the partner portal or to be allowed API access.\n\nContact Support:\n Email: dev@upsie.com",
+      "type": "text/plain"
+    }
+  }
+}

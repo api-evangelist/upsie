@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Upsie Partner Network Authorization Repair Assignments (/repairassignments) API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Repair Assignments (/repairassignments)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Repair Assignments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.upsie.com/partner/repairassignments",
+            "auth": {
+              "type": "apikey",
+              "key": "token",
+              "value": "{{token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get All Repair Assignments"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

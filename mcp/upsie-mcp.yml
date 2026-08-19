@@ -2,60 +2,64 @@ generated: '2026-07-21'
 method: derived
 status: candidate
 source: openapi/upsie-partner-network-openapi.yml
-description: >-
-  Upsie publishes no official MCP server (none found in docs, the npm registry,
-  or MCP registries as of 2026-07-21). This is a candidate tool list derived
-  from the operations of the Upsie Partner Network API, one tool per
-  operationId, for a future MCP server over api.upsie.com.
+description: Upsie publishes no official MCP server (none found in docs, the npm registry, or MCP registries
+  as of 2026-07-21). This is a candidate tool list derived from the operations of the Upsie Partner Network
+  API, one tool per operationId, for a future MCP server over api.upsie.com.
 server:
   name: upsie
   transport: http
 tools:
-  - name: create_repair
-    description: Create a repair request (all-in-one or empty draft)
-    source_operation: openapi/upsie-partner-network-openapi.yml#createRepair
-  - name: list_repairs
-    description: Get all repairs for the partner organization
-    source_operation: openapi/upsie-partner-network-openapi.yml#listRepairs
-  - name: get_repair
-    description: Get one repair by id or identifier
-    source_operation: openapi/upsie-partner-network-openapi.yml#getRepair
-  - name: update_repair
-    description: Update a repair (including submitting it by setting repairStatus)
-    source_operation: openapi/upsie-partner-network-openapi.yml#updateRepair
-  - name: list_repair_items
-    description: Get repair items, filterable by repair id
-    source_operation: openapi/upsie-partner-network-openapi.yml#listRepairItems
-  - name: create_repair_item
-    description: Add a repair item to a repair
-    source_operation: openapi/upsie-partner-network-openapi.yml#createRepairItem
-  - name: list_repair_assignments
-    description: Get repair assignments (repair-performing partners only)
-    source_operation: openapi/upsie-partner-network-openapi.yml#listRepairAssignments
-  - name: list_repair_item_templates
-    description: Get quick-pick repair item templates, filterable by category
-    source_operation: openapi/upsie-partner-network-openapi.yml#listRepairItemTemplates
-  - name: list_repair_notes
-    description: Get the notes/communications on a repair
-    source_operation: openapi/upsie-partner-network-openapi.yml#listRepairNotes
-  - name: create_repair_note
-    description: Add a note to a repair
-    source_operation: openapi/upsie-partner-network-openapi.yml#createRepairNote
-  - name: list_repair_categories
-    description: Get repair categories
-    source_operation: openapi/upsie-partner-network-openapi.yml#listRepairCategories
-  - name: who_am_i
-    description: Verify the identity bound to the presented token
-    source_operation: openapi/upsie-partner-network-openapi.yml#whoAmI
-  - name: list_webhooks
-    description: List webhook subscriptions
-    source_operation: openapi/upsie-partner-network-openapi.yml#listWebhooks
-  - name: create_webhook
-    description: Create a webhook subscription for events like repair_status_updated
-    source_operation: openapi/upsie-partner-network-openapi.yml#createWebhook
-  - name: update_webhook
-    description: Update a webhook subscription
-    source_operation: openapi/upsie-partner-network-openapi.yml#updateWebhook
-  - name: delete_webhook
-    description: Delete a webhook subscription
-    source_operation: openapi/upsie-partner-network-openapi.yml#deleteWebhook
+- name: create_repair
+  description: Create a repair request (all-in-one or empty draft)
+  source_operation: openapi/upsie-partner-network-openapi.yml#createRepair
+- name: list_repairs
+  description: Get all repairs for the partner organization
+  source_operation: openapi/upsie-partner-network-openapi.yml#listRepairs
+- name: get_repair
+  description: Get one repair by id or identifier
+  source_operation: openapi/upsie-partner-network-openapi.yml#getRepair
+- name: update_repair
+  description: Update a repair (including submitting it by setting repairStatus)
+  source_operation: openapi/upsie-partner-network-openapi.yml#updateRepair
+- name: list_repair_items
+  description: Get repair items, filterable by repair id
+  source_operation: openapi/upsie-partner-network-openapi.yml#listRepairItems
+- name: create_repair_item
+  description: Add a repair item to a repair
+  source_operation: openapi/upsie-partner-network-openapi.yml#createRepairItem
+- name: list_repair_assignments
+  description: Get repair assignments (repair-performing partners only)
+  source_operation: openapi/upsie-partner-network-openapi.yml#listRepairAssignments
+- name: list_repair_item_templates
+  description: Get quick-pick repair item templates, filterable by category
+  source_operation: openapi/upsie-partner-network-openapi.yml#listRepairItemTemplates
+- name: list_repair_notes
+  description: Get the notes/communications on a repair
+  source_operation: openapi/upsie-partner-network-openapi.yml#listRepairNotes
+- name: create_repair_note
+  description: Add a note to a repair
+  source_operation: openapi/upsie-partner-network-openapi.yml#createRepairNote
+- name: list_repair_categories
+  description: Get repair categories
+  source_operation: openapi/upsie-partner-network-openapi.yml#listRepairCategories
+- name: who_am_i
+  description: Verify the identity bound to the presented token
+  source_operation: openapi/upsie-partner-network-openapi.yml#whoAmI
+- name: list_webhooks
+  description: List webhook subscriptions
+  source_operation: openapi/upsie-partner-network-openapi.yml#listWebhooks
+- name: create_webhook
+  description: Create a webhook subscription for events like repair_status_updated
+  source_operation: openapi/upsie-partner-network-openapi.yml#createWebhook
+- name: update_webhook
+  description: Update a webhook subscription
+  source_operation: openapi/upsie-partner-network-openapi.yml#updateWebhook
+- name: delete_webhook
+  description: Delete a webhook subscription
+  source_operation: openapi/upsie-partner-network-openapi.yml#deleteWebhook
+deployment:
+  mode: none
+  verified: derived
+  tools: 16
+  checked: '2026-08-12'
+  source: catalog MCP census

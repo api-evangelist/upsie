@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Upsie Partner Network Authorization Repairs (/repairs) API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Repairs (/repairs)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Repairs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.upsie.com/partner/repairs",
+            "auth": {
+              "type": "apikey",
+              "key": "token",
+              "value": "{{token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This endpoint returns all repairs regardless of any given status or attriibute. Filtering can be done client side or via query params. Documentation of the query param syntax used by the Upsie Repair Network API can be found below. Examples are included in the request Params tab. Please note that these params serve as examples only. They will not return any results unless matching data has been created for this organization. In order to test the included query params, create data such that the q"
+        },
+        {
+          "info": {
+            "name": "Create a Repair (all-in-one example)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.upsie.com/partner/repairs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "token",
+              "value": "{{token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a Repair (all-in-one example)"
+        },
+        {
+          "info": {
+            "name": "Create a Repair (non-phone example)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.upsie.com/partner/repairs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "token",
+              "value": "{{token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Many of the attributes in the repair object are nullable or assigned at creation or update. Below is a sample request body that satisfies the necessary requirements for repair creation."
+        },
+        {
+          "info": {
+            "name": "Get One Repair",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.upsie.com/partner/repairs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Repair id or identifier"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "token",
+              "value": "{{token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This endpoint will return a singular repair object. Include the repair identifier that was returned on repair creation as a query param (as seen in the example request) or simply append to the url (i.e. partner/repairs/"
+        },
+        {
+          "info": {
+            "name": "Update Repair",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.upsie.com/partner/repairs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Repair id or identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "token",
+              "value": "{{token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This endpoint will return a singular repair object. Include the repair identifier that was returned on repair creation as a query param (as seen in the example request) or simply append to the url (i.e. partner/repairs/"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,572 @@
+{
+  "item": [
+    {
+      "id": "2d0f09d2-95c9-41bb-97ca-9530e754054f",
+      "name": "Repairs (/repairs)",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ccd24548-a23b-4cd0-beb6-e6597368f2ae",
+          "name": "Create a Repair (all-in-one example)",
+          "request": {
+            "name": "Create a Repair (all-in-one example)",
+            "description": {},
+            "url": {
+              "path": [
+                "partner",
+                "repairs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requestedTiming\": \"ASAP\",\n  \"customer\": {\n    \"firstName\": \"Jane\",\n    \"lastName\": \"Doe\",\n    \"phoneNumber\": \"5554443333\",\n    \"email\": \"jane.doe@example.com\"\n  },\n  \"authorizedLimit\": 12500,\n  \"category\": \"Smartphones\",\n  \"meta\": {\n    \"policyNumber\": \"byUs483js\",\n    \"model\": \"iPhone 12 mini\",\n    \"serial\": \"abc12345\",\n    \"imei\": \"123456789012345\",\n    \"color\": \"black\",\n    \"storage\": \"256gb\"\n  },\n  \"repairLocationDetails\": {\n    \"address\": \"1 Green Ave, 55105\",\n    \"radiusInMiles\": 50\n  },\n  \"items\": [\n    {\n      \"repairItemTemplateId\": 3\n    },\n    {\n      \"description\": \"Front Screen Replacement\"\n    },\n    {\n      \"description\": \"rear screen rebuffering\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9fbfd49b-3dfe-4c9f-b128-2220c699db5d",
+              "name": "Create a Repair (all-in-one example)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "repairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestedTiming\": \"ASAP\",\n  \"customer\": {\n    \"firstName\": \"Jane\",\n    \"lastName\": \"Doe\",\n    \"phoneNumber\": \"5554443333\",\n    \"email\": \"jane.doe@example.com\"\n  },\n  \"authorizedLimit\": 12500,\n  \"category\": \"Smartphones\",\n  \"meta\": {\n    \"policyNumber\": \"byUs483js\",\n    \"model\": \"iPhone 12 mini\",\n    \"serial\": \"abc12345\",\n    \"imei\": \"123456789012345\",\n    \"color\": \"black\",\n    \"storage\": \"256gb\"\n  },\n  \"repairLocationDetails\": {\n    \"address\": \"1 Green Ave, 55105\",\n    \"radiusInMiles\": 50\n  },\n  \"items\": [\n    {\n      \"repairItemTemplateId\": 3\n    },\n    {\n      \"description\": \"Front Screen Replacement\"\n    },\n    {\n      \"description\": \"rear screen rebuffering\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 24,\n  \"identifier\": \"U0017\",\n  \"requestedAt\": \"2023-04-18T17:36:18.083Z\",\n  \"repairStatus\": \"DRAFT\",\n  \"assignmentStatus\": \"PENDING\",\n  \"paymentStatus\": null,\n  \"repairLocationDetails\": {\n    \"address\": \"1 Green Ave, 55105\",\n    \"radiusInMiles\": 50\n  },\n  \"comments\": null,\n  \"meta\": {\n    \"policyNumber\": \"byUs483js\",\n    \"model\": \"iPhone 12 mini\",\n    \"serial\": \"abc12345\",\n    \"imei\": \"123456789012345\",\n    \"color\": \"black\",\n    \"storage\": \"256gb\"\n  },\n  \"categoryId\": 4,\n  \"repairSourceId\": 1,\n  \"authorizedLimit\": 12500,\n  \"customerId\": 87141,\n  \"allowEditingCustomer\": false,\n  \"requestedTimingId\": 1,\n  \"smartphoneId\": 276,\n  \"activeAssignmentId\": null,\n  \"warrantyId\": null,\n  \"createdAt\": \"2023-04-18T17:36:18.083Z\",\n  \"modifiedAt\": \"2023-04-18T17:36:18.083Z\",\n  \"wasCancelled\": null,\n  \"estCompleteDate\": null,\n  \"intakeData\": null,\n  \"completedAt\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f768195-bc4d-4bcb-a66f-f17620951dc6",
+          "name": "Create a Repair (non-phone example)",
+          "request": {
+            "name": "Create a Repair (non-phone example)",
+            "description": {
+              "content": "Many of the attributes in the repair object are nullable or assigned at creation or update. Below is a sample request body that satisfies the necessary requirements for repair creation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "partner",
+                "repairs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requestedTiming\": \"ASAP\",\n  \"customer\": {\n    \"firstName\": \"Jane\",\n    \"lastName\": \"Doe\",\n    \"phoneNumber\": \"5554443333\",\n    \"email\": \"jane.doe@example.com\"\n  },\n  \"authorizedLimit\": 12500,\n  \"category\": \"Tablets\",\n  \"meta\": {\n    \"model\": \"iPad Air\",\n    \"serial\": \"xyz98765\",\n    \"color\": \"black\",\n    \"storage\": \"512gb\"\n  },\n  \"repairLocationDetails\": {\n    \"address\": \"370 Wabasha St N, 55102\",\n    \"radiusInMiles\": 50\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "415767b3-8d87-4a08-abf0-7d2b4db3d371",
+              "name": "Successful response (no example published in the collection)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "repairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestedTiming\": \"ASAP\",\n  \"customer\": {\n    \"firstName\": \"Jane\",\n    \"lastName\": \"Doe\",\n    \"phoneNumber\": \"5554443333\",\n    \"email\": \"jane.doe@example.com\"\n  },\n  \"authorizedLimit\": 12500,\n  \"category\": \"Tablets\",\n  \"meta\": {\n    \"model\": \"iPad Air\",\n    \"serial\": \"xyz98765\",\n    \"color\": \"black\",\n    \"storage\": \"512gb\"\n  },\n  \"repairLocationDetails\": {\n    \"address\": \"370 Wabasha St N, 55102\",\n    \"radiusInMiles\": 50\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6022ecb1-24f5-469c-96d5-841f2888220f",
+          "name": "Get All Repairs",
+          "request": {
+            "name": "Get All Repairs",
+            "description": {
+              "content": "This endpoint returns all repairs regardless of any given status or attriibute. Filtering can be done client side or via query params. Documentation of the query param syntax used by the Upsie Repair Network API can be found below. Examples are included in the request Params tab. Please note that these params serve as examples only. They will not return any results unless matching data has been created for this organization. In order to test the included query params, create data such that the query is satisfied.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "partner",
+                "repairs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "eda5dc9c-4cf5-47d0-8b83-cd7042697152",
+              "name": "Successful response (no example published in the collection)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "repairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d239cf8b-1d3e-4304-b56a-a80422a6cc9f",
+          "name": "Get One Repair",
+          "request": {
+            "name": "Get One Repair",
+            "description": {
+              "content": "This endpoint will return a singular repair object. Include the repair identifier that was returned on repair creation as a query param (as seen in the example request) or simply append to the url (i.e. partner/repairs/",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "partner",
+                "repairs",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Repair id or identifier"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a3502da3-9946-4035-b8bd-8ad93bf22bc2",
+              "name": "Successful response (no example published in the collection)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "repairs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Repair id or identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c723d00-7ef0-4e84-8786-babaed4dd936",
+          "name": "Update Repair",
+          "request": {
+            "name": "Update Repair",
+            "description": {
+              "content": "This endpoint will return a singular repair object. Include the repair identifier that was returned on repair creation as a query param (as seen in the example request) or simply append to the url (i.e. partner/repairs/",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "partner",
+                "repairs",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Repair id or identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"repairStatus\": \"SUBMITTED\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a0c3e586-db0a-44d1-8e1f-1a9715a08324",
+              "name": "Successful response (no example published in the collection)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "repairs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Repair id or identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"repairStatus\": \"SUBMITTED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.upsie.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4976789a-1950-44b1-b434-41fb83e9ae15",
+    "name": "Upsie Partner Network Authorization Repairs (/repairs) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Upsie Partner API! We are excited to offer our partners a secure and reliable way to access our repair network. Our API is designed to provide a simple and standardized interface for accessing the repair network while maintaining the highest level of security. It allows partner network members to easily request repairs, access details about all their repairs, and obtain other repair-related information. To ensure that all requests are authenticated and authorized, we use JSON Web Tokens (JWT) in our API. This feature ensures that only authorized users can access our network, and all requests remain secure and protected from malicious attacks. Additionally, our API adheres to industry-standard RESTful principles, making it easy to integrate with a wide range of platforms and applications. We are committed to providing our partners and customers with the best possible experience when using our API, and we welcome feedback and suggestions for improvement via email to dev@upsie.com . Accessing the API The production api is accessed at https://api.upsie.com and a sandbox environment is accessible at https://stage-api.upsie.com base production url: api.upsie.com base stage url: stage-api.upsie.com Authentication The Upsie Partner Network API uses JWT Tokens to authenticate requests. The token should be passed in a token header with each api request. Suggestions for safe use of JWT Tokens Protect your token: These API keys carry many privileges, so be sure to keep them secure. Do not share API keys in publicly accessible areas such as GitHub, client-side code, etc. Do not share your token with others and always keep it safe. Use HTTPS: Always use a secure connection when making API requests to prevent attackers from intercepting or tampering with the JWT token. Invalidate token when necessary: Always invalidate your accounts JWT token if you suspect one has been lost or stolen. Partner scoped API access tokens have 10 year expiration time. API tokens can be generated and invalidated via the partner portal. Contact us if you need access to the partner portal or to be allowed API access.\n\nContact Support:\n Email: dev@upsie.com",
+      "type": "text/plain"
+    }
+  }
+}
