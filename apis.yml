@@ -36,6 +36,13 @@ image: https://res.cloudinary.com/upsie/image/upload/f_auto,fl_lossy,q_auto/v163
 tags:
 - Company
 - Warranties
+- Protection-Plans
+- Consumer Electronics
+- Repairs
+- Insurance
+tags_raw:
+- Company
+- Warranties
 - Protection Plans
 - Consumer Electronics
 - Repairs
@@ -134,6 +141,8 @@ apis:
   humanURL: https://documenter.getpostman.com/view/16328390/2s8ZDeUykK
   baseURL: https://api.upsie.com
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
