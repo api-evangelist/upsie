@@ -23,6 +23,16 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "upsie-authorization-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "upsie-repair-assignments-repairassignments-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "upsie-repair-categories-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "upsie-repair-item-templates-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "upsie-repair-items-repairitems-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "upsie-repair-notes-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "upsie-repairs-repairs-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "upsie-webhooks-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }
