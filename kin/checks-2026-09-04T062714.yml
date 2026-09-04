@@ -1,17 +1,17 @@
 ---
 kin_checks:
   slug: upsie
-  schema_version: 0.17.2
-  scored_at: '2026-09-01'
-  run_ts: 2026-09-01T063623
+  schema_version: 0.18.2
+  scored_at: '2026-09-04'
+  run_ts: 2026-09-04T062714
   note: Actionable checks only (missed + partial). earned/na are every other check
-    in rubric/scoring-0.17.2.yml; counts below let you verify that.
+    in rubric/scoring-0.18.2.yml; counts below let you verify that.
   counts:
-    total: 130
-    earned: 44
-    partial: 8
-    missed: 57
-    na: 21
+    total: 132
+    earned: 29
+    partial: 23
+    missed: 58
+    na: 22
   checks:
   - id: well_known_published
     status: missed
@@ -32,6 +32,8 @@ kin_checks:
   - id: webhooks_or_callbacks
     status: missed
     detail: 0 of 8 openapi documents pass
+  - id: inbound_contract_published
+    status: missed
   - id: json_schema_present
     status: missed
   - id: json_schema_per_resource
@@ -132,10 +134,67 @@ kin_checks:
     status: missed
   - id: agentic_commerce
     status: missed
-  - id: operations_description_coverage
+  - id: contract_present
+    status: partial
+    earned: 5.0
+  - id: openapi_3_2
+    status: partial
+    earned: 1.25
+    detail: 8 of 8 openapi documents pass
+  - id: info_complete
+    status: partial
+    earned: 1.0
+    detail: 8 of 8 openapi documents pass
+  - id: servers_defined
+    status: partial
+    earned: 0.75
+    detail: 8 of 8 openapi documents pass
+  - id: servers_resolvable
+    status: partial
+    earned: 1.25
+  - id: operations_summary_coverage
     status: partial
     earned: 1.5
+    detail: 8 of 8 openapi documents pass
+  - id: operations_description_coverage
+    status: partial
+    earned: 0.38
     detail: 2 of 8 openapi documents pass
+  - id: operations_tagged
+    status: partial
+    earned: 1.0
+    detail: 8 of 8 openapi documents pass
+  - id: operations_operation_ids
+    status: partial
+    earned: 1.0
+    detail: 8 of 8 openapi documents pass
+  - id: response_coverage
+    status: partial
+    earned: 1.25
+    detail: 8 of 8 openapi documents pass
+  - id: examples_present
+    status: partial
+    earned: 1.0
+  - id: security_schemes_defined
+    status: partial
+    earned: 1.0
+    detail: 8 of 8 openapi documents pass
+  - id: security_applied
+    status: partial
+    earned: 0.75
+    detail: 8 of 8 openapi documents pass
+  - id: oauth_flows_current
+    status: partial
+    earned: 1.0
+    detail: 8 of 8 openapi documents pass
+  - id: credentials_not_in_query
+    status: partial
+    earned: 0.75
+    detail: 8 of 8 openapi documents pass
+  - id: oauth_scopes_enumerated
+    status: partial
+    earned: 1.0
+    detail: 8 of 8 openapi documents pass
   - id: lifecycle_documented
     status: partial
     earned: 1.89
